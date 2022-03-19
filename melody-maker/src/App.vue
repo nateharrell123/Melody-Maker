@@ -5,11 +5,12 @@
 </template>
 
 <style>
+body{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
 body {
   background-color: #32363B;
-}
-* {
-  margin: 0;
-  padding: 0;
 }
 </style>
