@@ -9,13 +9,6 @@
 <script>
 export default {
     name: "Title",
-    data(){
-        return{
-        }
-    },
-    mounted:{
-
-    }
 }
 </script>
 
@@ -34,10 +27,11 @@ export default {
 @keyframes slideInTop {
     0% {
         transform: translateY(700%);
-        opacity: ;
+        opacity: 0;
     }
     100% {
         transform: translateY(0);
+        opacity: 1;
     }
 }
 
