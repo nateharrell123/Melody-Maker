@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    hello
+    <Title />
   </div>
 </template>
 
-<style>
-body{
-  padding: 0;
-  margin: 0;
-  width: 100%;
+<script>
+import Title from "@/components/Title.vue"
+export default {
+  name: "App",
+  components:{
+    Title
+  }
 }
+</script>
+
+<style>
+
 body {
-  background-color: #32363B;
+  background-color: #32363B !important;
 }
 </style>
