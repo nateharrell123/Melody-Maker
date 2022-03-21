@@ -5,11 +5,11 @@
         <div class="melody-form">
           <span class="key-title">What key are we in?</span>
           <div class="key-select">
-<div class="form-group" :class="{ 'form-group--error': $v.fieldA.$error }">
-    <label class="form__label">Field A</label>
-    <input class="form__input" v-model.trim="$v.fieldA.$model"/>
-  </div>
-  <div class="error" v-if="!$v.fieldA.required">Field A is required.</div>
+            <div class="form-group" :class="{ 'form-group--error': $v.fieldA.$error }">
+                <label class="form__label">Field A</label>
+                <input class="form__input" v-model.trim="$v.fieldA.$model"/>
+            </div>
+            <div class="error" v-if="!$v.fieldA.required">Field A is required.</div>
           </div>
         </div>
       </b-card>
@@ -47,7 +47,8 @@ export default {
     padding-left:5px;
 }
 .card {
-  background: #222222;
+  /* background: #222222; */
+  background:white;
   height: 500px;
   width: 1200px;
   margin: auto;
