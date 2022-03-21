@@ -6,8 +6,7 @@
           <span class="key-title">What key are we in?</span>
           <div class="key-select">
             <div class="form-group" :class="{ 'form-group--error': $v.fieldA.$error }">
-                <label class="form__label">Field A</label>
-                <input class="form__input" v-model.trim="$v.fieldA.$model"/>
+                <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="C, D#, Eb, etc." v-model.trim="$v.fieldA.$model"/>
             </div>
             <div class="error" v-if="!$v.fieldA.required">Field A is required.</div>
           </div>
@@ -18,7 +17,7 @@
 </template>
 
 <script>
-import { required, minLength } from 'vuelidate/lib/validators'
+import { required, alpha } from 'vuelidate/lib/validators'
 
 export default {
   name: "MelodyCard",
@@ -31,7 +30,7 @@ export default {
   validations: {
     fieldA: {
       required,
-      minLength: minLength(3)
+      alpha,
     },
   }
 };
