@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <Title />
-    <Carousel />
+    <MelodyCard />
   </div>
 </template>
 
 <script>
 import Title from "@/components/Title.vue"
-import Carousel from "@/components/Carousel.vue"
+import MelodyCard from "@/components/MelodyCard.vue"
 
 export default {
   name: "App",
   components:{
     Title,
-    Carousel
+    MelodyCard
   }
 }
 </script>
