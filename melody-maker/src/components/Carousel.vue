@@ -1,6 +1,6 @@
 <template>
 <header>
-  <div class="container" id="showMe">
+  <div class="container" id="element">
       <b-card class="card">
           <b-select class="">
               <option value="1"> asdfasdf</option>
@@ -23,7 +23,7 @@ export default {
 <style scoped>
 .container{
     padding-top:50px;
-
+    transition: opacity 1s;
 }
 .card{
     background:#222222;
@@ -33,11 +33,25 @@ export default {
 }
 
 #showMe {
-  animation: cssAnimation 0s 1.3s forwards;
+  animation: cssAnimation 0s 2s forwards;
   opacity: 0; 
 }
 
-@keyframes cssAnimation {
-  to   { opacity: 1; }
+#element{
+    -webkit-animation: 3s ease 0s normal forwards 1 fadein;
+    animation: 3s ease 0s normal forwards 1 fadein;
 }
+
+@keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
 </style>
