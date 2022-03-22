@@ -5,10 +5,11 @@
         <div class="melody-form">
           <span class="key-title">What key are we in?</span>
           <div class="key-select">
-            <div class="form-group" :class="{ 'form-group--error': $v.fieldA.$error }">
-                <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="C, D#, Eb, etc." v-model.trim="$v.fieldA.$model"/>
+            <div class="form-group" :class="{ 'form-group--error': $v.key.$error }">
+                <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="C, D#, Eb, etc." v-model.trim="$v.key.$model"/>
             </div>
-            <div class="error" v-if="!$v.fieldA.required">Field A is required.</div>
+            <div class="error" v-if="!$v.key.required">{{ keyErrorMsg }}</div>
+            <div class="error" v-if="!$v.key.keyValidate">{{ keyErrorMsg }}</div>
           </div>
         </div>
       </b-card>
@@ -17,21 +18,45 @@
 </template>
 
 <script>
-import { required, alpha } from 'vuelidate/lib/validators'
+import { required } from 'vuelidate/lib/validators'
 
 export default {
   name: "MelodyCard",
   data() {
     return {
-      fieldA: '',
-      fieldB: ''
+      key: "",
+      keyErrorMsg: ""
     }
   },
-  validations: {
-    fieldA: {
-      required,
-      alpha,
-    },
+  methods: {
+    keyValidate(key){
+
+      if (key === undefined){
+        console.log("key is undefined")
+      }
+      
+      if (key.length > 1){
+        if (!key.endsWith("#") || !key.endsWith("b")) {
+          return false;
+        }
+      }
+      else if (!key.match(/^[a-hA-H]+$/)){ // has to start with an alphabet character in the musical keys
+        this.keyErrorMsg = "Key must start start with a letter (A-G)"
+        return false;
+      }
+      else {
+        //console.log("criteria met")
+        return true;
+      }
+    }
+  },
+  validations() {
+    return {
+      key: {
+        required,
+        keyValidate : this.keyValidate(this.key),
+      },
+    }
   }
 };
 </script>
@@ -70,7 +95,7 @@ export default {
   animation: 3s ease 0s normal forwards 1 fadein;
 }
 .key-title {
-  color: white;
+  /* color: white; */
   font-family: "Montserrat";
   font-weight: 350;
   font-size: 45px;
