@@ -8,7 +8,7 @@
             <div class="form-group" :class="{ 'form-group--error': $v.key.$error }">
                 <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="C, D#, Eb, etc." v-model.trim="$v.key.$model"/>
             </div>
-            <div class="error" v-if="!$v.key.required">{{ keyErrorMsg }}</div>
+            <div class="error" v-if="!$v.key.required">Must have a key (C, D#, Eb, etc.)</div>
             <div class="error" v-if="!$v.key.keyValidate">{{ keyErrorMsg }}</div>
           </div>
         </div>
@@ -40,7 +40,7 @@ export default {
           return false;
         }
       }
-      else if (!key.match(/^[a-hA-H]+$/)){ // has to start with an alphabet character in the musical keys
+      else if (!key.charAt(0).match(/^[a-hA-H]+$/)){ // has to start with an alphabet character in the musical keys
         this.keyErrorMsg = "Key must start start with a letter (A-G)"
         return false;
       }
