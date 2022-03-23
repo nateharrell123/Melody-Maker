@@ -6,11 +6,10 @@
           <span class="key-title">What key are we in?</span>
           <div class="key-select">
             <div class="form-group" :class="{ 'form-group--error': $v.key.$error }">
-                <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="C, D#, Eb, etc." v-model.trim="$v.key.$model"/>
+                <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
             </div>
-            <div class="error" v-if="!$v.key.required">Must have a key (C, D#, Eb, etc.)</div>
-            <div class="error" v-if="!$v.key.endCharValidation">Key doesn't end with # or b</div>
-            <div class="error" v-if="!$v.key.startCharValidation">Key doesn't end with # or b</div>
+            <div class="error" v-if="!$v.key.startCharValidation">Key doesn't start with a letter or is past G</div>
+            <div class="error" v-if="!$v.key.endCharValidation && $v.key.required">Key doesn't end with # or b</div>
           </div>
         </div>
       </b-card>
@@ -22,7 +21,10 @@
 import { required } from 'vuelidate/lib/validators'
 
 const startCharValidation = (key) => {
-  if (!key.charAt(0).match(/^[a-hA-H]+$/)) { 
+  if (key.indexOf(' ') >= 0) {
+    return true;
+  }
+  else if (!key.charAt(0).match(/^[a-hA-H]+$/)) { // THIS WORKS
     console.log("key does not start with a letter or is past G")
     return false;
   }
@@ -40,7 +42,7 @@ const endCharValidation = (key) => {
       return true;
     }
   }
-  return false;
+  else return true;
 }
 
 export default {
