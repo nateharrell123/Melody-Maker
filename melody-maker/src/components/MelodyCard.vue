@@ -9,7 +9,8 @@
                 <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="C, D#, Eb, etc." v-model.trim="$v.key.$model"/>
             </div>
             <div class="error" v-if="!$v.key.required">Must have a key (C, D#, Eb, etc.)</div>
-            <div class="error" v-if="!$v.key.keyValidate">{{ keyErrorMsg }}</div>
+            <div class="error" v-if="!$v.key.endCharValidation">Key doesn't end with # or b</div>
+            <div class="error" v-if="!$v.key.startCharValidation">Key doesn't end with # or b</div>
           </div>
         </div>
       </b-card>
@@ -20,44 +21,44 @@
 <script>
 import { required } from 'vuelidate/lib/validators'
 
+const startCharValidation = (key) => {
+  if (!key.charAt(0).match(/^[a-hA-H]+$/)) { 
+    console.log("key does not start with a letter or is past G")
+    return false;
+  }
+  else return true;
+}
+
+const endCharValidation = (key) => {
+  if (key.length > 1){
+    if (!key.endsWith("#") || !key.endsWith("b")) {
+      console.log(key, "Key doesn't end with # or b")
+      return false;
+    }
+    else {
+      console.log("criteria met")
+      return true;
+    }
+  }
+  return false;
+}
+
 export default {
   name: "MelodyCard",
   data() {
     return {
       key: "",
-      keyErrorMsg: ""
     }
   },
   methods: {
-    keyValidate(key){
-
-      if (key === undefined){
-        console.log("key is undefined")
-      }
-      
-      if (key.length > 1){
-        if (!key.endsWith("#") || !key.endsWith("b")) {
-          return false;
-        }
-      }
-      else if (!key.charAt(0).match(/^[a-hA-H]+$/)){ // has to start with an alphabet character in the musical keys
-        this.keyErrorMsg = "Key must start start with a letter (A-G)"
-        return false;
-      }
-      else {
-        //console.log("criteria met")
-        return true;
-      }
-    }
   },
-  validations() {
-    return {
+  validations: {
       key: {
         required,
-        keyValidate : this.keyValidate(this.key),
+        startCharValidation,
+        endCharValidation
       },
     }
-  }
 };
 </script>
 
