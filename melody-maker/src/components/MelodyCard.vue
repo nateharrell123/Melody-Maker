@@ -8,8 +8,8 @@
             <div class="form-group" :class="{ 'form-group--error': $v.key.$error }">
                 <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
             </div>
-            <div class="error" v-if="!$v.key.startCharValidation">Key doesn't start with a letter or is past G</div>
-            <div class="error" v-if="!$v.key.endCharValidation && $v.key.required">Key doesn't end with # or b</div>
+            <div class="error" v-if="!$v.key.startCharValidation">Key must begin with a letter (A-G)</div>
+            <div class="error" v-if="!$v.key.endCharValidation">Key doesn't end with # or b</div>
           </div>
         </div>
       </b-card>
@@ -24,7 +24,7 @@ const startCharValidation = (key) => {
   if (key.indexOf(' ') >= 0) {
     return true;
   }
-  else if (!key.charAt(0).match(/^[a-hA-H]+$/)) { // THIS WORKS
+  else if (!key.charAt(0).match(/^[a-gA-G]+$/)) { 
     console.log("key does not start with a letter or is past G")
     return false;
   }
@@ -33,13 +33,12 @@ const startCharValidation = (key) => {
 
 const endCharValidation = (key) => {
   if (key.length > 1){
-    if (!key.endsWith("#") || !key.endsWith("b")) {
-      console.log(key, "Key doesn't end with # or b")
-      return false;
+    if (key.endsWith("#") || key.endsWith("b")) {
+      console.log(key, "Key ends with # or b")
+      return true;
     }
     else {
-      console.log("criteria met")
-      return true;
+      return false;
     }
   }
   else return true;
