@@ -4,12 +4,12 @@
       <b-card class="card">
         <div class="melody-form">
           <span class="key-title">What key are we in?</span>
-          <div class="key-select">
+          <div class="key-select" style="width: 295px;">
             <div class="form-group" :class="{ 'form-group--error': $v.key.$error }">
                 <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
             </div>
-            <div class="error" v-if="!$v.key.startCharValidation">Key must begin with a letter (A-G)</div>
-            <div class="error" v-if="!$v.key.endCharValidation">Key doesn't end with # or b</div>
+            <div class="error" v-if="!$v.key.startCharValidation">Key must begin with a letter (A-G).</div>
+            <div class="error" v-if="!$v.key.endCharValidation">Key doesn't end with # or b.</div>
           </div>
         </div>
       </b-card>
@@ -85,12 +85,7 @@ export default {
 .key-text{
   height:45px;
   font-family: "Montserrat";
-  width:155px;
-}
-
-#showMe {
-  animation: cssAnimation 0s 2s forwards;
-  opacity: 0;
+  width:155px !important;
 }
 
 #fade-card {
