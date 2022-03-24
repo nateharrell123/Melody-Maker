@@ -20,7 +20,7 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 const startCharValidation = (key) => {
   if (key.indexOf(' ') >= 0) {
@@ -54,16 +54,12 @@ export default {
     }
   },
   methods: {
+    ...mapGetters(["getFormValidationSectionOne"]),
     me(){
-      console.log(this.$store.state.sectionOne)
+      console.log(this.$store.state.formValidation.sectionOne)
     }
   },
   computed: {
-    ...mapState({
-          sectionOne: false,
-          sectionTwo: false,
-          sectionThree: false
-    })
   },
   validations: {
       key: {

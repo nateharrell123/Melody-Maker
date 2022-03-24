@@ -5,9 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        sectionOne: false,
-        sectionTwo: false,
-        sectionThree: false
+        formValidation: {
+            sectionOne: false,
+            sectionTwo: false,
+            sectionThree: false
+        }
     },
     getters: {
         getFormValidationSectionOne: (state) => state.formValidation.sectionOne
