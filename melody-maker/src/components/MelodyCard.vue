@@ -11,6 +11,7 @@
             <div class="error" v-if="!$v.key.startCharValidation">Key must begin with a letter (A-G).</div>
             <div class="error" v-if="!$v.key.endCharValidation">Key doesn't end with # or b.</div>
           </div>
+          <button @click="me"> click </button>
         </div>
       </b-card>
     </div>
@@ -19,6 +20,7 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
+import { mapGetters } from 'vuex'
 
 const startCharValidation = (key) => {
   if (key.indexOf(' ') >= 0) {
@@ -52,6 +54,10 @@ export default {
     }
   },
   methods: {
+    ...mapGetters(["getFormValidationSectionOne"]),
+    me(){
+      console.log(this.getFormValidationSectionOne)
+    }
   },
   validations: {
       key: {
