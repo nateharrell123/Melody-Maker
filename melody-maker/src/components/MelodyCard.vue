@@ -4,9 +4,19 @@
       <b-card class="card">
         <div class="melody-form">
           <span class="key-title">What key are we in?</span>
-          <div class="key-select" style="width: 375px;">
-            <div class="form-group" :class="{ 'form-group--error': $v.key.$error }">
-                <b-form-input class="form__input" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
+          <div class="key-select">
+            <div class="form-group" id="key-inner-fields" :class="{ 'form-group--error': $v.key.$error }">
+                <b-form-input style="width:305px;" class="form__input" size="md" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
+                <b-form-select id="key-modes-select" v-model="keyModeSelected" :options="keyModes">
+                  <template #first>
+                    <b-form-select-option id="key-modes-select" :value="null" disabled>Maj / Min</b-form-select-option>
+                  </template>
+                </b-form-select>
+                <b-form-select id="key-modes-select" v-model="keyModeSelected" :options="keyModes">
+                  <template #first>
+                    <b-form-select-option id="key-modes-select" :value="null" disabled>Maj / Min</b-form-select-option>
+                  </template>
+                </b-form-select>
             </div>
             <div class="error" id="error-message" v-if="!$v.key.startCharValidation">Key must begin with a letter <span class="accent-color">(A-G). </span></div>
             <div class="error" id="error-message" v-if="!$v.key.endCharValidation">Key must end with 
@@ -15,7 +25,6 @@
                 <span class="accent-color"> 'b' (flat).</span> 
             </div>
           </div>
-          <button @click="me"> click </button>
         </div>
       </b-card>
     </div>
@@ -55,6 +64,11 @@ export default {
   data() {
     return {
       key: "",
+      keyModeSelected: null,
+      keyModes: [
+          { value: 'Major', text: 'Maj' },
+          { value: 'Minor', text: 'Min' },
+      ]
     }
   },
   methods: {
@@ -77,9 +91,16 @@ export default {
 </script>
 
 <style scoped>
+#key-modes-select{
+    font-family: "Montserrat";
+
+}
 .container { /* for animation */
   padding-top: 50px;
   transition: opacity 1s;
+}
+#key-inner-fields{
+  display:flex;
 }
 #error-message{
   color:#F88D30;
