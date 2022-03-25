@@ -4,12 +4,16 @@
       <b-card class="card">
         <div class="melody-form">
           <span class="key-title">What key are we in?</span>
-          <div class="key-select" style="width: 295px;">
+          <div class="key-select" style="width: 375px;">
             <div class="form-group" :class="{ 'form-group--error': $v.key.$error }">
-                <b-form-input class="form__input" id="key-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
+                <b-form-input class="form__input" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
             </div>
-            <div class="error" v-if="!$v.key.startCharValidation">Key must begin with a letter (A-G).</div>
-            <div class="error" v-if="!$v.key.endCharValidation">Key doesn't end with # or b.</div>
+            <div class="error" id="error-message" v-if="!$v.key.startCharValidation">Key must begin with a letter <span class="accent-color">(A-G). </span></div>
+            <div class="error" id="error-message" v-if="!$v.key.endCharValidation">Key must end with 
+              <span class="accent-color">'#' (sharp) </span>
+               or 
+                <span class="accent-color"> 'b' (flat).</span> 
+            </div>
           </div>
           <button @click="me"> click </button>
         </div>
@@ -54,12 +58,13 @@ export default {
     }
   },
   methods: {
-    ...mapGetters(["getFormValidationSectionOne"]),
     me(){
-      console.log(this.$store.state.formValidation.sectionOne)
+      // console.log(this.$store.state.formValidation.sectionOne)
+      console.log(this.getFormValidationSectionOne)
     }
   },
   computed: {
+    ...mapGetters(["getFormValidationSectionOne"]),
   },
   validations: {
       key: {
@@ -72,9 +77,17 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container { /* for animation */
   padding-top: 50px;
   transition: opacity 1s;
+}
+#error-message{
+  color:#F88D30;
+  font-family: "Montserrat";
+  font-size:18px;
+}
+.accent-color{
+    color:#EB1E82;
 }
 .key-select{
     padding-top:20px;
@@ -83,14 +96,13 @@ export default {
 .card {
   /* background: #222222; */
   background:white;
-  height: 500px;
-  width: 1200px;
+  min-height:600px;
   margin: auto;
 }
 .melody-form {
   padding-left: 25px;
 }
-.key-text{
+.key-input-text{
   height:45px;
   font-family: "Montserrat";
   width:155px !important;
