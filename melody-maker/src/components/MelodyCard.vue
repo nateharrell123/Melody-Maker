@@ -1,27 +1,30 @@
 <template>
   <header>
     <div class="container" id="fade-card">
-      <b-col>
       <b-card class="card">
         <div class="melody-form">
-          <b-col>
           <span class="key-title">What key are we in?</span>
-          </b-col>
           <div class="key-select">
+            <b-row>
             <div class="form-group" id="key-inner-fields" :class="{ 'form-group--error': $v.key.$error }">
-                <b-form-input class="form__input w-50" size="md" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
-                <b-col id="select-columns">
+                <b-col cols="3"> 
+                  <b-form-input class="form__input" size="md" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
+                </b-col>
+                <div class="col-md-1"/>
+                <b-col cols="3">
                 <b-form-select id="key-modes-select" v-model="keyModeSelected" :options="keyModes">
                   <template #first>
                     <b-form-select-option id="key-modes-select" :value="null" disabled>Maj / Min</b-form-select-option>
                   </template>
                 </b-form-select>
+                </b-col>
+                <b-col cols="3">
                 <b-form-select id="key-modes-select" v-model="keyModeSelected" :options="keyModes">
                   <template #first>
                     <b-form-select-option id="bpm-select" :value="null" disabled>Maj / Min</b-form-select-option>
                   </template>
                 </b-form-select>
-              </b-col>
+                </b-col>
             </div>
             <div class="error" id="error-message" v-if="!$v.key.startCharValidation">Key must begin with a letter <span class="accent-color">(A-G). </span></div>
             <div class="error" id="error-message" v-if="!$v.key.endCharValidation">Key must end with 
@@ -29,10 +32,10 @@
                or 
                 <span class="accent-color"> 'b' (flat).</span> 
             </div>
+            </b-row>
           </div>
         </div>
       </b-card>
-      </b-col>
     </div>
   </header>
 </template>
@@ -136,6 +139,7 @@ export default {
   height:45px;
   font-family: "Montserrat";
   width:155px !important;
+
 }
 
 #fade-card {
