@@ -1,12 +1,16 @@
 <template>
   <header>
     <div class="container" id="fade-card">
+      <b-col>
       <b-card class="card">
         <div class="melody-form">
+          <b-col>
           <span class="key-title">What key are we in?</span>
+          </b-col>
           <div class="key-select">
             <div class="form-group" id="key-inner-fields" :class="{ 'form-group--error': $v.key.$error }">
-                <b-form-input style="width:305px;" class="form__input" size="md" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
+                <b-form-input class="form__input w-50" size="md" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
+                <b-col id="select-columns">
                 <b-form-select id="key-modes-select" v-model="keyModeSelected" :options="keyModes">
                   <template #first>
                     <b-form-select-option id="key-modes-select" :value="null" disabled>Maj / Min</b-form-select-option>
@@ -14,9 +18,10 @@
                 </b-form-select>
                 <b-form-select id="key-modes-select" v-model="keyModeSelected" :options="keyModes">
                   <template #first>
-                    <b-form-select-option id="key-modes-select" :value="null" disabled>Maj / Min</b-form-select-option>
+                    <b-form-select-option id="bpm-select" :value="null" disabled>Maj / Min</b-form-select-option>
                   </template>
                 </b-form-select>
+              </b-col>
             </div>
             <div class="error" id="error-message" v-if="!$v.key.startCharValidation">Key must begin with a letter <span class="accent-color">(A-G). </span></div>
             <div class="error" id="error-message" v-if="!$v.key.endCharValidation">Key must end with 
@@ -27,6 +32,7 @@
           </div>
         </div>
       </b-card>
+      </b-col>
     </div>
   </header>
 </template>
@@ -93,7 +99,7 @@ export default {
 <style scoped>
 #key-modes-select{
     font-family: "Montserrat";
-
+    min-height:40px;
 }
 .container { /* for animation */
   padding-top: 50px;
@@ -101,6 +107,9 @@ export default {
 }
 #key-inner-fields{
   display:flex;
+}
+#select-columns{
+
 }
 #error-message{
   color:#F88D30;
