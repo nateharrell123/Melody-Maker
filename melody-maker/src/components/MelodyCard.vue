@@ -44,6 +44,11 @@
 import { required } from 'vuelidate/lib/validators'
 import { mapGetters, mapMutations } from 'vuex'
 
+
+eventBus.$on("test", () => { // try this next time
+  this.val3 = "Hello there"
+})
+
 const startCharValidation = (key) => {
   // if (key.indexOf(' ') >= 0) {
   //   return true; i have no idea what this code does
@@ -52,7 +57,8 @@ const startCharValidation = (key) => {
     return false;
   }
   else
-  {
+  { 
+     eventBus.$emit("test", true)
      return true;
   }
 }
@@ -77,7 +83,7 @@ export default {
   data() {
     return {
       key: "",
-      somebullShit: "asjdkflasjdlkfajsd",
+      val3: "",
       keyModeSelected: null,
       keyModes: [
           { value: 'Major', text: 'Maj' },
@@ -88,9 +94,7 @@ export default {
   methods: {
     ...mapMutations(["setFormValidationSectionOne"]),
     me(){
-      console.log(` before ${this.getFormValidationSectionOne}`)
-      this.setFormValidationSectionOne(true)
-      console.log(`after ${this.getFormValidationSectionOne}`)
+      console.log(this.val3)
     }
   },
   computed: {
