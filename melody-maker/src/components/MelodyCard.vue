@@ -8,7 +8,7 @@
             <b-row>
             <div class="form-group" id="key-inner-fields" :class="{ 'form-group--error': $v.key.$error }">
                 <b-col cols="3"> 
-                  <b-form-input class="form__input" size="md" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
+                  <b-form-input class="form__input" size="md" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model="key"/>
                 </b-col>
                 <div style="padding-right:45px"/>
                 <b-col cols="3">
@@ -30,7 +30,7 @@
                 <span class="accent-color"> 'b' (flat).</span> 
             </div>
             </b-row>
-            <b-row>
+            <b-row v-show="getFormValidationSectionOne">
             <div> <button @click="me"> Hey </button></div>
             </b-row>
           </div>
@@ -49,12 +49,10 @@ const startCharValidation = (key) => {
   //   return true; i have no idea what this code does
   // }
   if (!key.charAt(0).match(/^[a-gA-G]+$/)) { 
-    console.log("key does not start with a letter or is past G")
     return false;
   }
   else
   {
-    this.setFormValidationSectionOne(true)
      return true;
   }
 }
@@ -62,14 +60,16 @@ const startCharValidation = (key) => {
 const endCharValidation = (key) => {
   if (key.length > 1){
     if (key.endsWith("#") || key.endsWith("b")) {
-      console.log(key, "Key ends with # or b")
       return true;
     }
     else {
       return false;
     }
   }
-  else return true;
+  else 
+  {
+    return true;
+  }
 }
 
 export default {
@@ -77,6 +77,7 @@ export default {
   data() {
     return {
       key: "",
+      somebullShit: "asjdkflasjdlkfajsd",
       keyModeSelected: null,
       keyModes: [
           { value: 'Major', text: 'Maj' },
