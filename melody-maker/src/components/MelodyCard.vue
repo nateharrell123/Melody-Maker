@@ -10,7 +10,7 @@
                 <b-col cols="3"> 
                   <b-form-input class="form__input" size="md" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model.trim="$v.key.$model"/>
                 </b-col>
-                <div class="col-md-1"/>
+                <div style="padding-right:45px"/>
                 <b-col cols="3">
                 <b-form-select id="key-modes-select" v-model="keyModeSelected" :options="keyModes">
                   <template #first>
@@ -18,12 +18,9 @@
                   </template>
                 </b-form-select>
                 </b-col>
+                <b-col cols="3"/>
                 <b-col cols="3">
-                <b-form-select id="key-modes-select" v-model="keyModeSelected" :options="keyModes">
-                  <template #first>
-                    <b-form-select-option id="bpm-select" :value="null" disabled>Maj / Min</b-form-select-option>
-                  </template>
-                </b-form-select>
+                  NICE WORK
                 </b-col>
             </div>
             <div class="error" id="error-message" v-if="!$v.key.startCharValidation">Key must begin with a letter <span class="accent-color">(A-G). </span></div>
@@ -32,6 +29,9 @@
                or 
                 <span class="accent-color"> 'b' (flat).</span> 
             </div>
+            </b-row>
+            <b-row>
+            <div> <button @click="me"> Hey </button></div>
             </b-row>
           </div>
         </div>
@@ -42,17 +42,21 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 const startCharValidation = (key) => {
-  if (key.indexOf(' ') >= 0) {
-    return true;
-  }
-  else if (!key.charAt(0).match(/^[a-gA-G]+$/)) { 
+  // if (key.indexOf(' ') >= 0) {
+  //   return true; i have no idea what this code does
+  // }
+  if (!key.charAt(0).match(/^[a-gA-G]+$/)) { 
     console.log("key does not start with a letter or is past G")
     return false;
   }
-  else return true;
+  else
+  {
+    this.setFormValidationSectionOne(true)
+     return true;
+  }
 }
 
 const endCharValidation = (key) => {
@@ -81,9 +85,11 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["setFormValidationSectionOne"]),
     me(){
-      // console.log(this.$store.state.formValidation.sectionOne)
-      console.log(this.getFormValidationSectionOne)
+      console.log(` before ${this.getFormValidationSectionOne}`)
+      this.setFormValidationSectionOne(true)
+      console.log(`after ${this.getFormValidationSectionOne}`)
     }
   },
   computed: {
@@ -151,7 +157,7 @@ export default {
   font-weight: 350;
   font-size: 45px;
 }
-
+/* 
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -162,5 +168,5 @@ export default {
   100% {
     opacity: 1;
   }
-}
+} */
 </style>
