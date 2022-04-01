@@ -30,9 +30,7 @@
                 <span class="accent-color"> 'b' (flat).</span> 
             </div>
             </b-row>
-            <b-row v-show="getFormValidationSectionOne">
-            <div> <button @click="me"> Hey </button></div>
-            </b-row>
+            <div v-if="startCharValidation && endCharValidation"> <button @click="me"> Hey </button></div>
           </div>
         </div>
       </b-card>
@@ -41,28 +39,22 @@
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
+import { required, helpers } from 'vuelidate/lib/validators'
 import { mapGetters, mapMutations } from 'vuex'
 
-
-eventBus.$on("test", () => { // try this next time
-  this.val3 = "Hello there"
-})
-
-const startCharValidation = (key) => {
-  // if (key.indexOf(' ') >= 0) {
-  //   return true; i have no idea what this code does
-  // }
-  if (!key.charAt(0).match(/^[a-gA-G]+$/)) { 
-    return false;
-  }
-  else
-  { 
-     eventBus.$emit("test", true)
-     return true;
-  }
-}
-
+const startCharValidation =
+    helpers.withParams(
+      { type: 'exampleOne' },
+      (key) => {
+        if (!key.charAt(0).match(/^[a-gA-G]+$/)) { 
+          return false;
+        }
+        else
+        { 
+           return true;
+        }
+      }
+     )
 const endCharValidation = (key) => {
   if (key.length > 1){
     if (key.endsWith("#") || key.endsWith("b")) {
@@ -77,12 +69,12 @@ const endCharValidation = (key) => {
     return true;
   }
 }
-
 export default {
   name: "MelodyCard",
   data() {
     return {
       key: "",
+      flag: false,
       val3: "",
       keyModeSelected: null,
       keyModes: [
@@ -104,6 +96,15 @@ export default {
       key: {
         required,
         startCharValidation,
+        // startCharValidation: (value) => {
+        //   if (!value.charAt(0).match(/^[a-gA-G]+$/)) { 
+        //   return false;
+        //   }
+        //   else
+        //   { 
+        //   return true;
+        //   }
+        // },
         endCharValidation
       },
     }
