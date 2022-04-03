@@ -9,7 +9,7 @@
               <div
                 class="form-group"
                 id="key-inner-fields"
-                :class="{ 'form-group--error': $v.key.$error }"
+                :class="{ 'form-group--error': $v.key.$error || $v.keyModeSelected.$error }"
               >
                 <b-col cols="3">
                   <b-form-input
@@ -20,27 +20,6 @@
                     placeholder="Enter a key (C, D#, Eb, etc.)"
                     v-model="key"
                   />
-                </b-col>
-                <div style="padding-right: 45px" />
-                <b-col cols="3">
-                  <b-form-select
-                    id="key-modes-select"
-                    v-model="keyModeSelected"
-                    :options="keyModes"
-                  >
-                    <template #first>
-                      <b-form-select-option
-                        id="key-modes-select"
-                        :value="null"
-                        disabled
-                        >Maj / Min</b-form-select-option
-                      >
-                    </template>
-                  </b-form-select>
-                </b-col>
-                <b-col cols="3" />
-                <b-col cols="3"> NICE WORK </b-col>
-              </div>
               <div
                 class="error"
                 id="error-message"
@@ -59,10 +38,40 @@
                 or
                 <span class="accent-color"> 'b' (flat).</span>
               </div>
+                </b-col>
+                <div style="padding-right: 45px" />
+                <b-col cols="3">
+                  <b-form-select
+                    class="form__input"
+                    id="key-modes-select"
+                    v-model="keyModeSelected"
+                    :options="keyModes"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        id="key-modes-select"
+                        :value="null"
+                        disabled
+                        >Maj / Min</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+              <div 
+                class="error"
+                id="error-message"
+                v-if="!$v.keyModeSelected.required"
+              >
+              Key Mode
+                <span class="accent-color">is required.</span>
+              </div>
+                </b-col>
+                <b-col cols="3" />
+                <b-col cols="3"> NICE WORK </b-col>
+              </div>
             </b-row>
-            <div v-if="startCharIsValid">
+            <!-- <div v-if="startCharIsValid">
               <button>Hey</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </b-card>
@@ -122,6 +131,7 @@ export default {
   },
   created() {
     bus.$on("StartCharIsValid", (data) => {
+      console.log(data)
       this.startCharValid = data
     });
   },
@@ -143,6 +153,9 @@ export default {
       // },
       endCharValidation,
     },
+    keyModeSelected: {
+      required
+    }
   },
 };
 </script>
@@ -151,6 +164,8 @@ export default {
 #key-modes-select {
   font-family: "Montserrat";
   min-height: 40px;
+}
+#error-message-key-Mode{
 }
 .container {
   /* for animation */
