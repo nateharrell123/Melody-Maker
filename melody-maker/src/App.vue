@@ -6,21 +6,20 @@
 </template>
 
 <script>
-import Title from "@/components/Title.vue"
-import MelodyCard from "@/components/MelodyCard.vue"
+import Title from "@/components/Title.vue";
+import MelodyCard from "@/components/MelodyCard.vue";
 
 export default {
   name: "App",
-  components:{
+  components: {
     Title,
-    MelodyCard
-  }
-}
+    MelodyCard,
+  },
+};
 </script>
 
 <style>
-
 body {
-  background-color: #32363B !important;
+  background-color: #32363b !important;
 }
 </style>

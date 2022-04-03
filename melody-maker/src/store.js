@@ -4,19 +4,19 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {
-        formValidation: {
-            sectionOne: false,
-            sectionTwo: false,
-            sectionThree: false
-        }
+  state: {
+    formValidation: {
+      sectionOne: false,
+      sectionTwo: false,
+      sectionThree: false,
     },
-    getters: {
-        getFormValidationSectionOne: (state) => state.formValidation.sectionOne
+  },
+  getters: {
+    getFormValidationSectionOne: (state) => state.formValidation.sectionOne,
+  },
+  mutations: {
+    setFormValidationSectionOne: (state, data) => {
+      state.formValidation.sectionOne = data;
     },
-    mutations: {
-        setFormValidationSectionOne: (state, data) => {
-            state.formValidation.sectionOne = data
-        }
-    }
+  },
 });

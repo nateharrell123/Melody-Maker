@@ -6,31 +6,63 @@
           <span class="key-title">What key are we in?</span>
           <div class="key-select">
             <b-row>
-            <div class="form-group" id="key-inner-fields" :class="{ 'form-group--error': $v.key.$error }">
-                <b-col cols="3"> 
-                  <b-form-input class="form__input" size="md" id="key-input-text" maxlength="2" placeholder="Enter a key (C, D#, Eb, etc.)" v-model="key"/>
-                </b-col>
-                <div style="padding-right:45px"/>
+              <div
+                class="form-group"
+                id="key-inner-fields"
+                :class="{ 'form-group--error': $v.key.$error }"
+              >
                 <b-col cols="3">
-                <b-form-select id="key-modes-select" v-model="keyModeSelected" :options="keyModes">
-                  <template #first>
-                    <b-form-select-option id="key-modes-select" :value="null" disabled>Maj / Min</b-form-select-option>
-                  </template>
-                </b-form-select>
+                  <b-form-input
+                    class="form__input"
+                    size="md"
+                    id="key-input-text"
+                    maxlength="2"
+                    placeholder="Enter a key (C, D#, Eb, etc.)"
+                    v-model="key"
+                  />
                 </b-col>
-                <b-col cols="3"/>
+                <div style="padding-right: 45px" />
                 <b-col cols="3">
-                  NICE WORK
+                  <b-form-select
+                    id="key-modes-select"
+                    v-model="keyModeSelected"
+                    :options="keyModes"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        id="key-modes-select"
+                        :value="null"
+                        disabled
+                        >Maj / Min</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
                 </b-col>
-            </div>
-            <div class="error" id="error-message" v-if="!$v.key.startCharValidation">Key must begin with a letter <span class="accent-color">(A-G). </span></div>
-            <div class="error" id="error-message" v-if="!$v.key.endCharValidation">Key must end with 
-              <span class="accent-color">'#' (sharp) </span>
-               or 
-                <span class="accent-color"> 'b' (flat).</span> 
-            </div>
+                <b-col cols="3" />
+                <b-col cols="3"> NICE WORK </b-col>
+              </div>
+              <div
+                class="error"
+                id="error-message"
+                v-if="!$v.key.startCharValidation"
+              >
+                Key must begin with a letter
+                <span class="accent-color">(A-G). </span>
+              </div>
+              <div
+                class="error"
+                id="error-message"
+                v-if="!$v.key.endCharValidation"
+              >
+                Key must end with
+                <span class="accent-color">'#' (sharp) </span>
+                or
+                <span class="accent-color"> 'b' (flat).</span>
+              </div>
             </b-row>
-            <div v-if="startCharValidation && endCharValidation"> <button @click="me"> Hey </button></div>
+            <div v-if="startCharIsValid">
+              <button>Hey</button>
+            </div>
           </div>
         </div>
       </b-card>
@@ -39,36 +71,37 @@
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
-import { bus } from '../main'
-import { mapGetters, mapMutations } from 'vuex'
+import { required } from "vuelidate/lib/validators";
+import { bus } from "../main";
+import { mapGetters, mapMutations } from "vuex";
 
-const startCharValidation =
-      (key) => {
-        if (!key.charAt(0).match(/^[a-gA-G]+$/)) { 
-          return false;
-        }
-        else
-        { 
-          bus.$emit('True', true)
-           return true;
-        }
-      }
-
-const endCharValidation = (key) => {
-  if (key.length > 1){
-    if (key.endsWith("#") || key.endsWith("b")) {
-      return true;
-    }
-    else {
+const startCharValidation = (key) => {
+  if (key.length > 1) {
+    if (!key.endsWith("#") || !key.endsWith("b")) {
       return false;
-    }
+    } 
   }
-  else 
-  {
+  if (!key.charAt(0).match(/^[a-gA-G]+$/)) {
+    bus.$emit("StartCharIsValid", false);
+    return false;
+  } else {
+    bus.$emit("StartCharIsValid", true);
     return true;
   }
-}
+};
+
+const endCharValidation = (key) => {
+  if (key.length > 1) {
+    if (key.endsWith("#") || key.endsWith("b")) {
+      return true;
+    } else {
+      bus.$emit("StartCharIsValid", false);
+      return false;
+    }
+  } else {
+    return true;
+  }
+};
 export default {
   name: "MelodyCard",
   data() {
@@ -76,87 +109,84 @@ export default {
       key: "",
       flag: false,
       val3: "",
+      startCharIsValid: false,
       keyModeSelected: null,
       keyModes: [
-          { value: 'Major', text: 'Maj' },
-          { value: 'Minor', text: 'Min' },
-      ]
-    }
+        { value: "Major", text: "Maj" },
+        { value: "Minor", text: "Min" },
+      ],
+    };
   },
   methods: {
     ...mapMutations(["setFormValidationSectionOne"]),
-    me(){
-      console.log(this.val3)
-    }
   },
-  created(){
-    bus.$on('True', (data) => {
-      console.log(data)
-    })
+  created() {
+    bus.$on("StartCharIsValid", (data) => {
+      this.startCharValid = data
+    });
   },
   computed: {
     ...mapGetters(["getFormValidationSectionOne"]),
   },
   validations: {
-      key: {
-        required,
-        startCharValidation,
-        // startCharValidation: (value) => {
-        //   if (!value.charAt(0).match(/^[a-gA-G]+$/)) { 
-        //   return false;
-        //   }
-        //   else
-        //   { 
-        //   return true;
-        //   }
-        // },
-        endCharValidation
-      },
-    }
+    key: {
+      required,
+      startCharValidation,
+      // startCharValidation: (value) => {
+      //   if (!value.charAt(0).match(/^[a-gA-G]+$/)) {
+      //   return false;
+      //   }
+      //   else
+      //   {
+      //   return true;
+      //   }
+      // },
+      endCharValidation,
+    },
+  },
 };
 </script>
 
 <style scoped>
-#key-modes-select{
-    font-family: "Montserrat";
-    min-height:40px;
+#key-modes-select {
+  font-family: "Montserrat";
+  min-height: 40px;
 }
-.container { /* for animation */
+.container {
+  /* for animation */
   padding-top: 50px;
   transition: opacity 1s;
 }
-#key-inner-fields{
-  display:flex;
+#key-inner-fields {
+  display: flex;
 }
-#select-columns{
-
+#select-columns {
 }
-#error-message{
-  color:#F88D30;
+#error-message {
+  color: #f88d30;
   font-family: "Montserrat";
-  font-size:18px;
+  font-size: 18px;
 }
-.accent-color{
-    color:#EB1E82;
+.accent-color {
+  color: #eb1e82;
 }
-.key-select{
-    padding-top:20px;
-    padding-left:5px;
+.key-select {
+  padding-top: 20px;
+  padding-left: 5px;
 }
 .card {
   /* background: #222222; */
-  background:white;
-  min-height:600px;
+  background: white;
+  min-height: 600px;
   margin: auto;
 }
 .melody-form {
   padding-left: 25px;
 }
-.key-input-text{
-  height:45px;
+.key-input-text {
+  height: 45px;
   font-family: "Montserrat";
-  width:155px !important;
-
+  width: 155px !important;
 }
 
 #fade-card {

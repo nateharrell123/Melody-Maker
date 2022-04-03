@@ -1,50 +1,49 @@
 <template>
-<header>
+  <header>
     <div class="title">
-        <span id="text">Let's get started.</span>
+      <span id="text">Let's get started.</span>
     </div>
-</header>
+  </header>
 </template>
 
 <script>
 export default {
-    name: "Title",
-}
+  name: "Title",
+};
 </script>
 
 <style scoped>
-.title{
-  margin-top:30px;
-  font-weight:550;
-  font-family: 'Montserrat';
+.title {
+  margin-top: 30px;
+  font-weight: 550;
+  font-family: "Montserrat";
   text-align: center;
-  font-size:75px;
+  font-size: 75px;
   text-transform: uppercase;
   transition: transform 1s;
 }
-#text{
-  background-image: linear-gradient(45deg, #EB1E82, #F88D30);
+#text {
+  background-image: linear-gradient(45deg, #eb1e82, #f88d30);
 
   background-size: 100%;
   background-repeat: repeat;
 
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
 }
 @keyframes slideInTop {
-    0% {
-        transform: translateY(700%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateY(700%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-header{
-    animation: 1s ease-out 0s 1 slideInTop;
+header {
+  animation: 1s ease-out 0s 1 slideInTop;
 }
-
 </style>
