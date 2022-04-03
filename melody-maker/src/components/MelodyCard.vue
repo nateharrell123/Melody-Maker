@@ -39,22 +39,22 @@
 </template>
 
 <script>
-import { required, helpers } from 'vuelidate/lib/validators'
+import { required } from 'vuelidate/lib/validators'
+import { bus } from '../main'
 import { mapGetters, mapMutations } from 'vuex'
 
 const startCharValidation =
-    helpers.withParams(
-      { type: 'exampleOne' },
       (key) => {
         if (!key.charAt(0).match(/^[a-gA-G]+$/)) { 
           return false;
         }
         else
         { 
+          bus.$emit('True', true)
            return true;
         }
       }
-     )
+
 const endCharValidation = (key) => {
   if (key.length > 1){
     if (key.endsWith("#") || key.endsWith("b")) {
@@ -88,6 +88,11 @@ export default {
     me(){
       console.log(this.val3)
     }
+  },
+  created(){
+    bus.$on('True', (data) => {
+      console.log(data)
+    })
   },
   computed: {
     ...mapGetters(["getFormValidationSectionOne"]),
