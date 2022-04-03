@@ -21,9 +21,9 @@
                     v-model="key"
                   />
               <div
+                v-if="!$v.key.startCharValidation"
                 class="error"
                 id="error-message"
-                v-if="!$v.key.startCharValidation"
               >
                 Key must begin with a letter
                 <span class="accent-color">(A-G). </span>
@@ -85,11 +85,11 @@ import { bus } from "../main";
 import { mapGetters, mapMutations } from "vuex";
 
 const startCharValidation = (key) => {
-  if (key.length > 1) {
-    if (!key.endsWith("#") || !key.endsWith("b")) {
-      return false;
-    } 
-  }
+  // if (key.length > 1) {
+  //   if (!key.endsWith("#") || !key.endsWith("b")) {
+  //     return false;
+  //   } 
+  // }
   if (!key.charAt(0).match(/^[a-gA-G]+$/)) {
     bus.$emit("StartCharIsValid", false);
     return false;
