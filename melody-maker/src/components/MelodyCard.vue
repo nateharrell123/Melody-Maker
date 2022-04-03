@@ -66,7 +66,7 @@
               </div>
                 </b-col>
                 <b-col cols="3" />
-                <b-col cols="3"> NICE WORK </b-col>
+                <b-col cols="3" v-show="sectionOneValid"> NICE WORK </b-col>
               </div>
             </b-row>
             <!-- <div v-if="startCharIsValid">
@@ -85,11 +85,6 @@ import { bus } from "../main";
 import { mapGetters, mapMutations } from "vuex";
 
 const startCharValidation = (key) => {
-  // if (key.length > 1) {
-  //   if (!key.endsWith("#") || !key.endsWith("b")) {
-  //     return false;
-  //   } 
-  // }
   if (!key.charAt(0).match(/^[a-gA-G]+$/)) {
     bus.$emit("StartCharIsValid", false);
     return false;
@@ -119,6 +114,7 @@ export default {
       flag: false,
       val3: "",
       startCharIsValid: false,
+      keyModeSelectedIsValid: false,
       keyModeSelected: null,
       keyModes: [
         { value: "Major", text: "Maj" },
@@ -131,12 +127,16 @@ export default {
   },
   created() {
     bus.$on("StartCharIsValid", (data) => {
-      console.log(data)
       this.startCharValid = data
     });
+
   },
   computed: {
     ...mapGetters(["getFormValidationSectionOne"]),
+    sectionOneValid: function() {
+      console.log(this.startCharIsValid)
+      return this.startCharIsValid
+    }
   },
   validations: {
     key: {
