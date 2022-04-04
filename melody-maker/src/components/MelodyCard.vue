@@ -64,6 +64,7 @@
               Key Mode
                 <span class="accent-color">is required.</span>
               </div>
+
                 </b-col>
                 <b-col cols="3" />
                 <b-col cols="3" class="check-image" v-if="$v.keyModeSelected.required && $v.key.endCharValidation && $v.key.startCharValidation">
@@ -108,17 +109,20 @@
                 Measures
                 <span class="accent-color"> are required. </span>
               </div>
+                <div style="padding-right: 45px" />
+
                 </b-col>
+
                 <b-col cols="3" />
                 <b-col cols="3" />
 
-                <b-col cols="3" class="check-image" v-if="$v.measures.required">
+                <b-col cols="3" class="check-image" v-if="$v.measures.required" style="padding-right:10px">
                   <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
                   href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
                   <img width="55" alt="Eo circle green checkmark" 
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/512px-Eo_circle_green_checkmark.svg.png">
                   </a>
-                  <div class="success-text">Key Selected: <span class="success-text-display">{{key.toUpperCase()}} {{keyModeSelected}} </span></div>
+                  <div class="success-text">Measures: <span class="success-text-display">{{measures}}</span></div>
                 </b-col>
             </b-row>
             </div>
