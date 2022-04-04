@@ -9,7 +9,8 @@
               <div
                 class="form-group"
                 id="key-inner-fields"
-                :class="{ 'form-group--error': $v.key.$error || $v.keyModeSelected.$error || $v.measures.$error || $v.chordProgressionSelection.$error }"
+                :class="{ 'form-group--error': $v.key.$error || $v.keyModeSelected.$error || $v.measures.$error || $v.chordProgressionSelection.$error
+                || $v.bpm.$error }"
               >
                 <b-col cols="3">
                   <b-form-input
@@ -83,7 +84,7 @@
               $v.key.endCharValidation && 
               $v.key.startCharValidation"
             >
-           <span class="key-title">How many measures?</span>
+           <span class="key-title">How many measures/what BPM?</span>
             <b-col cols="3">
                   <b-form-select
                     class="form__input"
@@ -109,11 +110,36 @@
                 Measures
                 <span class="accent-color"> are required. </span>
               </div>
-                <div style="padding-right: 45px" />
 
                 </b-col>
+                <b-col cols="3" style="padding-left:50px">
+                  <b-form-input
+                  style="width:100px"
+                    class="form__input"
+                    size="md"
+                    id="key-input-text"
+                    maxlength="3"
+                    placeholder="BPM:"
+                    v-model="bpm"
+                  />
+              <div
+                v-if="!$v.bpm.required"
+                class="error"
+                id="error-message"
+              >
+                BPM
+                <span class="accent-color"> is required. </span>
+              </div>
+              <div
+                v-if="!$v.bpm.numeric"
+                class="error"
+                id="error-message"
+              >
+                BPM
+                <span class="accent-color"> must be numeric. </span>
+              </div>
+                </b-col>
 
-                <b-col cols="3" />
                 <b-col cols="3" />
 
                 <b-col cols="3" class="check-image" v-if="$v.measures.required" style="padding-right:10px">
@@ -213,7 +239,7 @@
 </template>
 
 <script>
-import { required } from "vuelidate/lib/validators";
+import { required, numeric } from "vuelidate/lib/validators";
 import { bus } from "../main";
 import { mapGetters, mapMutations } from "vuex";
 
@@ -253,11 +279,12 @@ export default {
       chordProgressionSelection: null,
       chordProgression: null,
       creatingMelody: false,
+      bpm: null,
       keyModes: [
         { value: "Major", text: "Maj" },
         { value: "Minor", text: "Min" },
       ],
-      measuresOptions: [1, 2, 4, 8],
+      measuresOptions: [1, 2, 4, 8, 16],
       chordProgressionOptions: ["Yes", "No"],
       chordProgressions: []
     };
@@ -304,6 +331,10 @@ export default {
     },
     chordProgressionSelection: {
       required
+    },
+    bpm: {
+      required,
+      numeric
     }
   },
 };
