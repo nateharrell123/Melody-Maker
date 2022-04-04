@@ -189,13 +189,13 @@
                 </b-col>
               </div>
             </b-row> -->
-<div>
-  <b-button v-b-modal.modal-1>Launch demo modal</b-button>
+            <div class="melody-create">
+              <b-button v-b-modal.modal-1>Create Melody</b-button>
 
-  <b-modal id="modal-1" title="BootstrapVue">
-    <p class="my-4">Hello from modal!</p>
-  </b-modal>
-</div>
+              <b-modal id="modal-1" title="BootstrapVue">
+                <p class="my-4">Hello from modal!</p>
+              </b-modal>
+            </div>
             </div>
         </div>
       </b-card>
@@ -296,6 +296,9 @@ export default {
 #key-modes-select {
   font-family: "Montserrat";
   min-height: 40px;
+}
+.melody-create{
+  margin:auto;
 }
 .success-text{
   font-family: "Montserrat";
