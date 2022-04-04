@@ -201,8 +201,8 @@
               </b-modal>
             </div>
             </div>
-            <div v-if="creatingMelody" style="padding-top:30px">
-              <span id="melody-create-text" style="padding-right:25px">Creating melody...</span>
+            <div v-if="creatingMelody" id="melody-create-text" style="padding-top:30px padding-right:25px">
+                Creating melody...
               <b-spinner></b-spinner>
             </div>
             <button @click="done">Last thing for tonight </button>
