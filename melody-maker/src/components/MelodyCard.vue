@@ -196,10 +196,11 @@
             >
               <b-button v-b-modal.modal-1>Create Melody</b-button>
 
-              <b-modal id="modal-1" title="Create your melody">
-                <p class="my-4" id="melody-create-text">Create a melody in the key of {{key.toUpperCase()}} {{keyModeSelected}} lasting {{measures}} measures?</p>
+              <b-modal @ok="createMelody" id="modal-1" title="Create your melody">
+                <p class="my-4" id="melody-create-text">Create a melody in the key of <span class="accent-color">{{key.toUpperCase()}} {{keyModeSelected}} </span>lasting <span class="accent-color">{{measures}} </span> measures? </p>
               </b-modal>
             </div>
+            
             </div>
         </div>
       </b-card>
@@ -258,6 +259,10 @@ export default {
   },
   methods: {
     ...mapMutations(["setFormValidationSectionOne"]),
+    createMelody(bvModalEvt){
+      bvModalEvt.preventDefault()
+      console.log('axios post here')
+    }
   },
   created() {
     bus.$on("StartCharIsValid", (data) => {
@@ -306,7 +311,7 @@ export default {
 }
 #melody-create-text{
   font-family: "Montserrat";
-
+  font-size:18px;
 }
 .success-text{
   font-family: "Montserrat";
@@ -366,7 +371,7 @@ export default {
   font-weight: 350;
   font-size: 45px;
 }
-/* 
+
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -377,5 +382,5 @@ export default {
   100% {
     opacity: 1;
   }
-} */
+}
 </style>
