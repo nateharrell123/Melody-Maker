@@ -194,14 +194,18 @@
               $v.key.endCharValidation && 
               $v.key.startCharValidation && $v.measures.required"
             >
-              <b-button v-b-modal.modal-1>Create Melody</b-button>
+              <b-button v-if="!creatingMelody" v-b-modal.modal-1>Create Melody</b-button>
 
               <b-modal @ok="createMelody" id="modal-1" title="Create your melody">
                 <p class="my-4" id="melody-create-text">Create a melody in the key of <span class="accent-color">{{key.toUpperCase()}} {{keyModeSelected}} </span>lasting <span class="accent-color">{{measures}} </span> measures? </p>
               </b-modal>
             </div>
-            
             </div>
+            <div v-if="creatingMelody" style="padding-top:30px">
+              <span id="melody-create-text" style="padding-right:25px">Creating melody...</span>
+              <b-spinner></b-spinner>
+            </div>
+            <button @click="done">Last thing for tonight </button>
         </div>
       </b-card>
     </div>
@@ -248,6 +252,7 @@ export default {
       measures: null,
       chordProgressionSelection: null,
       chordProgression: null,
+      creatingMelody: false,
       keyModes: [
         { value: "Major", text: "Maj" },
         { value: "Minor", text: "Min" },
@@ -259,9 +264,12 @@ export default {
   },
   methods: {
     ...mapMutations(["setFormValidationSectionOne"]),
-    createMelody(bvModalEvt){
-      bvModalEvt.preventDefault()
+    createMelody(){
+      this.creatingMelody = true
       console.log('axios post here')
+    },
+    done(){
+      this.creatingMelody = false
     }
   },
   created() {
