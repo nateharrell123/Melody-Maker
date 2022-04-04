@@ -189,11 +189,15 @@
                 </b-col>
               </div>
             </b-row> -->
-            <div class="melody-create">
+            <div class="melody-create"
+              v-if="$v.keyModeSelected.required && 
+              $v.key.endCharValidation && 
+              $v.key.startCharValidation && $v.measures.required"
+            >
               <b-button v-b-modal.modal-1>Create Melody</b-button>
 
-              <b-modal id="modal-1" title="BootstrapVue">
-                <p class="my-4">Hello from modal!</p>
+              <b-modal id="modal-1" title="Create your melody">
+                <p class="my-4" id="melody-create-text">Create a melody in the key of {{key.toUpperCase()}} {{keyModeSelected}} lasting {{measures}} measures?</p>
               </b-modal>
             </div>
             </div>
@@ -298,7 +302,11 @@ export default {
   min-height: 40px;
 }
 .melody-create{
-  margin:auto;
+  font-family: "Montserrat";
+}
+#melody-create-text{
+  font-family: "Montserrat";
+
 }
 .success-text{
   font-family: "Montserrat";
@@ -311,8 +319,6 @@ export default {
 .check-image{
   text-align:right;
   padding-right:45px;
-}
-#error-message-key-Mode{
 }
 .container {
   /* for animation */
