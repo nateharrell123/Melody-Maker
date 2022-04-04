@@ -66,8 +66,20 @@
               </div>
                 </b-col>
                 <b-col cols="3" />
-                <b-col cols="3" v-if="$v.keyModeSelected.required && $v.key.endCharValidation && $v.key.startCharValidation"> NICE WORK </b-col>
+                <b-col cols="3" class="check-image" v-if="$v.keyModeSelected.required && $v.key.endCharValidation && $v.key.startCharValidation">
+                  <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
+                  href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
+                  <img width="55" alt="Eo circle green checkmark" 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/512px-Eo_circle_green_checkmark.svg.png">
+                  </a>
+                  <div class="success-text">Key Selected: <span class="success-text-display">{{key.toUpperCase()}} {{keyModeSelected}} </span></div>
+                </b-col>
               </div>
+            </b-row>
+            <!-- section two -->
+            <b-row class=""
+            v-if="$v.keyModeSelected.required && $v.key.endCharValidation && $v.key.startCharValidation">
+              Content 2 
             </b-row>
             <!-- <div v-if="startCharIsValid">
               <button>Hey</button>
@@ -160,6 +172,19 @@ export default {
 #key-modes-select {
   font-family: "Montserrat";
   min-height: 40px;
+}
+.success-text{
+  font-family: "Montserrat";
+  font-size: 18px;
+  overflow-wrap:normal;
+  color: #eb1e82;
+}
+.success-text-display{
+  color:#45a04a
+}
+.check-image{
+  text-align:right;
+  padding-right:45px;
 }
 #error-message-key-Mode{
 }
