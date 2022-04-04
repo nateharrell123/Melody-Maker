@@ -158,9 +158,10 @@
                 <span class="accent-color"> option. </span>
               </div>
                 <div style="padding-right: 45px" />
-                </b-col>
 
-                  <b-form-select
+                </b-col>
+                  <b-form-select style="height:30px"
+                  v-if="chordProgressionSelection !== null"
                     class="form__input"
                     id="key-modes-select"
                     v-model="chordProgressionSelection"
@@ -176,6 +177,7 @@
                     </template>
                   </b-form-select>
                 <b-col cols="3" />
+
                 <b-col cols="3" class="check-image" v-if="$v.chordProgressionSelection.required" style="padding-right:10px">
                   <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
                   href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
