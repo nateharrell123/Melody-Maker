@@ -126,7 +126,7 @@
                 </b-col>
             </b-row>
             <!-- section three -->
-            <b-row style="melody-form"
+            <!-- <b-row style="melody-form"
               v-if="$v.measures.required"
             >
            <span class="key-title">Should the melody follow a chord progression?</span>
@@ -161,7 +161,7 @@
 
                 </b-col>
                   <b-form-select style="height:30px"
-                  v-if="chordProgressionSelection !== null"
+                  v-if="chordProgressionSelection !== 'No'"
                     class="form__input"
                     id="key-modes-select"
                     v-model="chordProgressionSelection"
@@ -177,8 +177,9 @@
                     </template>
                   </b-form-select>
                 <b-col cols="3" />
+                <b-col cols="3" v-if="chordProgressionSelection !== 'Yes'" />
 
-                <b-col cols="3" class="check-image" v-if="$v.chordProgressionSelection.required" style="padding-right:10px">
+                <b-col cols="3" class="check-image" v-if="$v.chordProgressionSelection.required">
                   <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
                   href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
                   <img width="55" alt="Eo circle green checkmark" 
@@ -187,7 +188,14 @@
                   <div class="success-text">Chord Progression: <span class="success-text-display">{{measures}}</span></div>
                 </b-col>
               </div>
-            </b-row>
+            </b-row> -->
+<div>
+  <b-button v-b-modal.modal-1>Launch demo modal</b-button>
+
+  <b-modal id="modal-1" title="BootstrapVue">
+    <p class="my-4">Hello from modal!</p>
+  </b-modal>
+</div>
             </div>
         </div>
       </b-card>
