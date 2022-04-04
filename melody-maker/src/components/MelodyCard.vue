@@ -96,7 +96,7 @@
                         id="key-modes-select"
                         :value="null"
                         disabled
-                        >Maj / Min</b-form-select-option
+                        >0</b-form-select-option
                       >
                     </template>
                   </b-form-select>
@@ -105,9 +105,20 @@
                 class="error"
                 id="error-message"
               >
-                Key must begin with a letter
-                <span class="accent-color">(A-G). </span>
+                Measures
+                <span class="accent-color"> are required. </span>
               </div>
+                </b-col>
+                <b-col cols="3" />
+                <b-col cols="3" />
+
+                <b-col cols="3" class="check-image" v-if="$v.measures.required">
+                  <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
+                  href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
+                  <img width="55" alt="Eo circle green checkmark" 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/512px-Eo_circle_green_checkmark.svg.png">
+                  </a>
+                  <div class="success-text">Key Selected: <span class="success-text-display">{{key.toUpperCase()}} {{keyModeSelected}} </span></div>
                 </b-col>
             </b-row>
             </div>
