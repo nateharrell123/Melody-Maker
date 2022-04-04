@@ -9,7 +9,7 @@
               <div
                 class="form-group"
                 id="key-inner-fields"
-                :class="{ 'form-group--error': $v.key.$error || $v.keyModeSelected.$error }"
+                :class="{ 'form-group--error': $v.key.$error || $v.keyModeSelected.$error || $v.measures.$error }"
               >
                 <b-col cols="3">
                   <b-form-input
@@ -77,14 +77,40 @@
               </div>
             </b-row>
             <!-- section two -->
-            <b-row class=""
-            v-if="$v.keyModeSelected.required && $v.key.endCharValidation && $v.key.startCharValidation">
-              Content 2 
+            <b-row style="melody-form"
+              v-if="$v.keyModeSelected.required && 
+              $v.key.endCharValidation && 
+              $v.key.startCharValidation"
+            >
+           <span class="key-title">How many measures?</span>
+            <b-col cols="3">
+                  <b-form-select
+                    class="form__input"
+                    style="width:50px"
+                    id="key-modes-select"
+                    v-model="measures"
+                    :options="measuresOptions"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        id="key-modes-select"
+                        :value="null"
+                        disabled
+                        >Maj / Min</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+              <div
+                v-if="!$v.measures.required"
+                class="error"
+                id="error-message"
+              >
+                Key must begin with a letter
+                <span class="accent-color">(A-G). </span>
+              </div>
+                </b-col>
             </b-row>
-            <!-- <div v-if="startCharIsValid">
-              <button>Hey</button>
-            </div> -->
-          </div>
+            </div>
         </div>
       </b-card>
     </div>
@@ -128,10 +154,12 @@ export default {
       startCharIsValid: false,
       keyModeSelectedIsValid: false,
       keyModeSelected: null,
+      measures: null,
       keyModes: [
         { value: "Major", text: "Maj" },
         { value: "Minor", text: "Min" },
       ],
+      measuresOptions: [1, 2, 4, 8]
     };
   },
   methods: {
@@ -163,6 +191,9 @@ export default {
     },
     keyModeSelected: {
       required
+    },
+    measures: {
+      required
     }
   },
 };
@@ -175,7 +206,6 @@ export default {
 }
 .success-text{
   font-family: "Montserrat";
-  font-size: 18px;
   overflow-wrap:normal;
   color: #eb1e82;
 }
