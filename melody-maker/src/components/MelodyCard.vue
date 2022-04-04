@@ -9,7 +9,7 @@
               <div
                 class="form-group"
                 id="key-inner-fields"
-                :class="{ 'form-group--error': $v.key.$error || $v.keyModeSelected.$error || $v.measures.$error }"
+                :class="{ 'form-group--error': $v.key.$error || $v.keyModeSelected.$error || $v.measures.$error || $v.chordProgressionSelection.$error }"
               >
                 <b-col cols="3">
                   <b-form-input
@@ -125,6 +125,51 @@
                   <div class="success-text">Measures: <span class="success-text-display">{{measures}}</span></div>
                 </b-col>
             </b-row>
+            <!-- section three -->
+            <b-row style="melody-form"
+              v-if="$v.measures.required"
+            >
+           <span class="key-title">Should the melody follow a chord progression?</span>
+            <b-col cols="3">
+                  <b-form-select
+                    class="form__input"
+                    id="key-modes-select"
+                    v-model="chordProgressionSelection"
+                    :options="chordProgressionOptions"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        id="key-modes-select"
+                        :value="null"
+                        disabled
+                        >Please select an option:</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+              <div
+                v-if="!$v.chordProgressionSelection.required"
+                class="error"
+                id="error-message"
+              >
+                Please select
+                <span class="accent-color"> an option. </span>
+              </div>
+                <div style="padding-right: 45px" />
+
+                </b-col>
+
+                <b-col cols="3" />
+                <b-col cols="3" />
+
+                <b-col cols="3" class="check-image" v-if="$v.chordProgressionSelection.required" style="padding-right:10px">
+                  <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
+                  href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
+                  <img width="55" alt="Eo circle green checkmark" 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/512px-Eo_circle_green_checkmark.svg.png">
+                  </a>
+                  <div class="success-text">Chord Progression: <span class="success-text-display">{{measures}}</span></div>
+                </b-col>
+            </b-row>
             </div>
         </div>
       </b-card>
@@ -170,11 +215,13 @@ export default {
       keyModeSelectedIsValid: false,
       keyModeSelected: null,
       measures: null,
+      chordProgressionSelection: null,
       keyModes: [
         { value: "Major", text: "Maj" },
         { value: "Minor", text: "Min" },
       ],
-      measuresOptions: [1, 2, 4, 8]
+      measuresOptions: [1, 2, 4, 8],
+      chordProgressionOptions: ["Yes", "No"]
     };
   },
   methods: {
@@ -208,6 +255,9 @@ export default {
       required
     },
     measures: {
+      required
+    },
+    chordProgressionSelection: {
       required
     }
   },
