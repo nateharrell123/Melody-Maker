@@ -66,7 +66,7 @@
               </div>
                 </b-col>
                 <b-col cols="3" />
-                <b-col cols="3" v-show="sectionOneValid"> NICE WORK </b-col>
+                <b-col cols="3" v-if="$v.keyModeSelected.required && $v.key.endCharValidation && $v.key.startCharValidation"> NICE WORK </b-col>
               </div>
             </b-row>
             <!-- <div v-if="startCharIsValid">
@@ -133,10 +133,6 @@ export default {
   },
   computed: {
     ...mapGetters(["getFormValidationSectionOne"]),
-    sectionOneValid: function() {
-      console.log(this.startCharIsValid)
-      return this.startCharIsValid
-    }
   },
   validations: {
     key: {
