@@ -74,7 +74,7 @@
                   <img width="55" alt="Eo circle green checkmark" 
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/512px-Eo_circle_green_checkmark.svg.png">
                   </a>
-                  <div class="success-text">Key Selected: <span class="success-text-display">{{key.toUpperCase()}} {{keyModeSelected}} </span></div>
+                  <div class="success-text">Key Selected: <span class="success-text-display">{{key}} {{keyModeSelected}} </span></div>
                 </b-col>
               </div>
             </b-row>
@@ -138,17 +138,37 @@
                 BPM
                 <span class="accent-color"> must be numeric. </span>
               </div>
+              <div
+                v-if="!$v.bpm.maxValue"
+                class="error"
+                id="error-message"
+              >
+                BPM
+                <span class="accent-color"> can't be more than 220 :/. </span>
+              </div>
+              <div
+                v-if="!$v.bpm.minValue"
+                class="error"
+                id="error-message"
+              >
+                BPM
+                <span class="accent-color"> can't be less than 40.</span>
+              </div>
                 </b-col>
 
                 <b-col cols="3" />
 
-                <b-col cols="3" class="check-image" v-if="$v.measures.required" style="padding-right:10px">
+                <b-col cols="3" class="check-image" v-if="$v.measures.required && $v.bpm.required 
+                && $v.bpm.numeric && $v.bpm.maxValue && $v.bpm.minValue
+                " style="padding-right:10px">
                   <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
                   href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
                   <img width="55" alt="Eo circle green checkmark" 
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/512px-Eo_circle_green_checkmark.svg.png">
                   </a>
                   <div class="success-text">Measures: <span class="success-text-display">{{measures}}</span></div>
+                  <div class="success-text">BPM: <span class="success-text-display">{{bpm}}</span></div>
+
                 </b-col>
             </b-row>
             <!-- section three -->
@@ -217,13 +237,16 @@
             </b-row> -->
             <div class="melody-create"
               v-if="$v.keyModeSelected.required && 
-              $v.key.endCharValidation && 
+              $v.key.endCharValidation && $v.bpm.required && $v.bpm.numeric &&
               $v.key.startCharValidation && $v.measures.required"
             >
               <b-button v-if="!creatingMelody" v-b-modal.modal-1>Create Melody</b-button>
 
               <b-modal @ok="createMelody" id="modal-1" title="Create your melody">
-                <p class="my-4" id="melody-create-text">Create a melody in the key of <span class="accent-color">{{key.toUpperCase()}} {{keyModeSelected}} </span>lasting <span class="accent-color">{{measures}} </span> measures? </p>
+                <p class="my-4" id="melody-create-text">Create a melody in the key of <span class="accent-color">{{key.toUpperCase()}} {{keyModeSelected}}
+                   </span>lasting <span class="accent-color">{{measures}} </span> measures at <span class="accent-color"> {{bpm}} </span> BPM? 
+
+                </p>
               </b-modal>
             </div>
             </div>
@@ -239,7 +262,7 @@
 </template>
 
 <script>
-import { required, numeric } from "vuelidate/lib/validators";
+import { required, numeric, maxValue, minValue } from "vuelidate/lib/validators";
 import { bus } from "../main";
 import { mapGetters, mapMutations } from "vuex";
 
@@ -334,7 +357,9 @@ export default {
     },
     bpm: {
       required,
-      numeric
+      numeric,
+      maxValue: maxValue(220),
+      minValue: minValue(40)
     }
   },
 };
@@ -378,6 +403,7 @@ export default {
   color: #f88d30;
   font-family: "Montserrat";
   font-size: 18px;
+  overflow-wrap: normal;
 }
 .accent-color {
   color: #eb1e82;
