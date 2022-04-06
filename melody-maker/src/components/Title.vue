@@ -46,8 +46,6 @@ export default {
 .how-it-works{
   text-align:left;
   font-size: 45px;
-  padding-right:30px;
-  width:20% !important;
   color: white;
   background:none;
   outline:none;
@@ -103,7 +101,7 @@ export default {
   -webkit-text-fill-color: transparent;
 }
 #text-2{
-    background-image: linear-gradient(45deg, #eb1e82, #f88d30);
+  background-image: linear-gradient(45deg, #eb1e82, #f88d30);
 
   background-size: 100%;
   letter-spacing: 5px;
