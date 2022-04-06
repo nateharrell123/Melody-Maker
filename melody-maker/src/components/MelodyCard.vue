@@ -237,7 +237,8 @@
             </b-row> -->
             <div class="melody-create"
               v-if="$v.keyModeSelected.required && 
-              $v.key.endCharValidation && $v.bpm.required && $v.bpm.numeric &&
+              $v.key.endCharValidation && $v.bpm.required && $v.bpm.numeric 
+              && $v.bpm.maxValue && $v.bpm.minValue &&
               $v.key.startCharValidation && $v.measures.required"
             >
               <b-button v-if="!creatingMelody" v-b-modal.modal-1>Create Melody</b-button>
@@ -254,7 +255,6 @@
                 Creating melody...
               <b-spinner></b-spinner>
             </div>
-            <button @click="done">Last thing for tonight </button>
         </div>
       </b-card>
     </div>

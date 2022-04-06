@@ -77,7 +77,20 @@ export default {
     font-size:35px !important;
     text-align: center !important;
     padding: 0px !important;
-    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width:2500px)
+{
+  .title-2 {
+    font-size:55px !important;
+    text-align: center !important;
+    padding: 0px !important;
+  }
+  .how-it-works {
+    font-size:35px !important;
+    text-align: center !important;
+    padding: 0px !important;
   }
 }
 .title-2{
@@ -113,7 +126,7 @@ export default {
 }
 @keyframes slideInTop {
   0% {
-    transform: translateY(700%);
+    transform: translateY(10px);
     opacity: 0;
   }
   100% {
