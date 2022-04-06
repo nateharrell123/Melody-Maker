@@ -430,9 +430,6 @@ export default {
 .key-input-text {
   height: 45px;
   font-family: "Montserrat";
-  background-color: transparent;
-  color:#9AAAAA;
-
   width: 155px !important;
 }
 
