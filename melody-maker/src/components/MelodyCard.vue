@@ -3,7 +3,7 @@
     <div class="container" id="fade-card">
       <b-card class="card">
         <div class="melody-form">
-          <span class="key-title">What key are we in?</span>
+          <span class="key-title accent-color">What key are we in?</span>
           <div class="key-select">
             <b-row>
               <div
@@ -16,7 +16,7 @@
                   <b-form-input
                     class="form__input"
                     size="md"
-                    id="key-input-text"
+                    id="enter-key-color"
                     maxlength="2"
                     placeholder="Enter a key (C, D#, Eb, etc.)"
                     v-model="key"
@@ -84,7 +84,7 @@
               $v.key.endCharValidation && 
               $v.key.startCharValidation"
             >
-           <span class="key-title">How many measures/what BPM?</span>
+           <span class="key-title accent-color">How many measures/what BPM?</span>
             <b-col cols="3">
                   <b-form-select
                     class="form__input"
@@ -368,7 +368,13 @@ export default {
 <style scoped>
 #key-modes-select {
   font-family: "Montserrat";
+  background-color: transparent;
+  color: #9AAAAA;
   min-height: 40px;
+}
+#enter-key-color{
+  background-color:transparent;
+  color:#9AAAAA;
 }
 .melody-create{
   font-family: "Montserrat";
@@ -413,8 +419,8 @@ export default {
   padding-left: 5px;
 }
 .card {
-  /* background: #222222; */
-  background: white;
+  background: #32363b;
+  /* background: white; */
   min-height: 600px;
   margin: auto;
 }
@@ -424,6 +430,9 @@ export default {
 .key-input-text {
   height: 45px;
   font-family: "Montserrat";
+  background-color: transparent;
+  color:#9AAAAA;
+
   width: 155px !important;
 }
 

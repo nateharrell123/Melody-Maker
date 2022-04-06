@@ -5,8 +5,8 @@
     </div>
     <div class="title-2" id="fade-in">
       <span id="text-2">melodies.io </span>
-    <div>
-    <button class="how-it-works">
+    <div style="float:right;"> <!-- remove dis-->
+    <button class="how-it-works steel">
       how it works
     </button>
     </div>
@@ -58,6 +58,9 @@ export default {
   background-color: white;
   display:block;
   transition: .2s ease-in-out;
+}
+.steel{
+color:#9AAAAA;
 }
 .how-it-works:hover::after{
   content:'';
