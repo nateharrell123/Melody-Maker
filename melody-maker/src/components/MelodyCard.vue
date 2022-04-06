@@ -413,6 +413,7 @@ export default {
 }
 .accent-color {
   color: #eb1e82;
+  /* color: #f88d30; */
 }
 .key-select {
   padding-top: 20px;
