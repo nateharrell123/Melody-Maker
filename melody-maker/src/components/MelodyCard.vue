@@ -441,6 +441,9 @@ export default {
   0% {
     opacity: 0;
   }
+  33% {
+    opacity: 0;
+  }
   66% {
     opacity: 0;
   }

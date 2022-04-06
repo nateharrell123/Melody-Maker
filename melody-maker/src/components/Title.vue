@@ -4,10 +4,12 @@
       <span id="text">Let's get started.</span>
     </div>
     <div class="title-2" id="fade-in">
-      <span id="text-2">Melodies.io </span>
-    <!-- <div class="how-it-works">
-      how it works:
-    </div> -->
+      <span id="text-2">melodies.io </span>
+    <div>
+    <button class="how-it-works">
+      how it works
+    </button>
+    </div>
     </div>
   </header>
 </template>
@@ -42,8 +44,29 @@ export default {
   transition: transform 1s;
 }
 .how-it-works{
-  float:right;
+  text-align:left;
+  font-size: 45px;
   padding-right:30px;
+  width:20% !important;
+  color: white;
+  background:none;
+  outline:none;
+  border:none;
+}
+.how-it-works::after{
+  content:'';
+  height:2px;
+  width:0%;
+  background-color: white;
+  display:block;
+  transition: .2s ease-in-out;
+}
+.how-it-works:hover::after{
+  content:'';
+  height:2px;
+  width:100%;
+  background-color: white;
+  display:block;
 }
 @media only screen and (max-width:600px)
 {
@@ -51,6 +74,12 @@ export default {
     font-size:55px !important;
     text-align: center !important;
     padding: 0px !important;
+  }
+  .how-it-works {
+    font-size:35px !important;
+    text-align: center !important;
+    padding: 0px !important;
+    width: 100% !important;
   }
 }
 .title-2{
