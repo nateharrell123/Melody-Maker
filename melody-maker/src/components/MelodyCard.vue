@@ -333,7 +333,7 @@
               <b-button v-if="!creatingMelody" v-b-modal.modal-1>Create Melody</b-button>
 
               <b-modal @ok="createMelody" id="modal-1" title="Create your melody">
-                <p class="my-4" id="melody-create-text">Create a melody in the key of <span class="accent-color">{{key.toUpperCase()}} {{keyModeSelected}}
+                <p class="my-4" id="melody-create-text">Have {{writers}} create a melody in the key of <span class="accent-color">{{key.toUpperCase()}} {{keyModeSelected}}
                    </span>lasting <span class="accent-color">{{measures}} </span> measures at <span class="accent-color"> {{bpm}} </span> BPM? 
 
                 </p>
