@@ -257,7 +257,7 @@
                   <img width="55" alt="Eo circle green checkmark" 
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/512px-Eo_circle_green_checkmark.svg.png">
                   </a>
-                  <div class="success-text">Assigned to: <span class="success-text-display">{{writer}}</span></div>
+                  <div class="success-text">Assigned to: <span class="success-text-display">{{writers}}</span></div>
                 </b-col>
             </b-row>
             <!-- section three -->
