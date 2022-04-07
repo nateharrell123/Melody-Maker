@@ -69,9 +69,6 @@ export default {
   display:block;
   transition: .2s ease-in-out;
 }
-.steel{
-color:#9AAAAA;
-}
 .how-it-works:hover::after{
   content:'';
   height:2px;
@@ -79,6 +76,9 @@ color:#9AAAAA;
   background-color: #f88d30;
   display:block;
 }
+  .steel{
+  color:#9AAAAA;
+  }
 @media only screen and (max-width:600px)
 {
   .title-2 {
