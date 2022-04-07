@@ -188,7 +188,7 @@
                     class="form__input"
                     style="width:250px"
                     id="key-modes-select"
-                    v-model="writer"
+                    v-model="writers"
                     :options="writerOptions"
                   >
                     <template #first>
@@ -392,7 +392,7 @@ export default {
       chordProgression: null,
       creatingMelody: false,
       bpm: null,
-      writer: null,
+      writers: null,
       keyModes: [
         { value: "Major", text: "Maj" },
         { value: "Minor", text: "Min" },
