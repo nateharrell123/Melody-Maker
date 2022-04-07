@@ -200,7 +200,7 @@
                       >
                     </template>
                   </b-form-select>
-                  <button class="how-it-works"> <i>who are these people?? </i> </button>
+                  <button class="how-it-works"> <i>what do you mean who?? </i> </button>
               <div
                 v-if="!$v.measures.required"
                 class="error"
@@ -250,7 +250,7 @@
                 <b-col cols="3" />
 
                 <b-col cols="3" class="check-image" v-if="$v.measures.required && $v.bpm.required 
-                && $v.bpm.numeric && $v.bpm.maxValue && $v.bpm.minValue
+                && $v.bpm.numeric && $v.bpm.maxValue && $v.bpm.minValue && $v.writer.required
                 " style="padding-right:10px">
                   <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
                   href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
@@ -327,7 +327,7 @@
             <div class="melody-create"
               v-if="$v.keyModeSelected.required && 
               $v.key.endCharValidation && $v.bpm.required && $v.bpm.numeric 
-              && $v.bpm.maxValue && $v.bpm.minValue &&
+              && $v.bpm.maxValue && $v.bpm.minValue && $v.writers.required &&
               $v.key.startCharValidation && $v.measures.required"
             >
               <b-button v-if="!creatingMelody" v-b-modal.modal-1>Create Melody</b-button>
@@ -451,6 +451,9 @@ export default {
       numeric,
       maxValue: maxValue(220),
       minValue: minValue(40)
+    },
+    writers: {
+      required
     }
   },
 };
@@ -465,13 +468,13 @@ export default {
   border:none;
 }
 .how-it-works:hover{
-  color:#1AAAAA;
+  color:#9DDDDD;
 }
 .how-it-works::after{
   content:'';
   height:2px;
   width:0%;
-  background-color: #9AAAAA;
+  background-color: #1AAAAA;
   display:block;
   transition: .2s ease-in-out;
 }
@@ -479,7 +482,7 @@ export default {
   content:'';
   height:2px;
   width:100%;
-  background-color: #9AAAAA;
+  background-color: #1AAAAA;
   display:block;
 }
 #key-modes-select {
