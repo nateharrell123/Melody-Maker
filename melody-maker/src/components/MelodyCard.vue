@@ -117,10 +117,11 @@
                   style="width:100px"
                     class="form__input"
                     size="md"
-                    id="key-input-text"
+                    id="enter-key-color"
                     maxlength="3"
                     placeholder="BPM:"
                     v-model="bpm"
+
                   />
               <div
                 v-if="!$v.bpm.required"
@@ -144,7 +145,7 @@
                 id="error-message"
               >
                 BPM
-                <span class="accent-color"> can't be more than 220 :/. </span>
+                <span class="accent-color"> can't be more than 220. </span>
               </div>
               <div
                 v-if="!$v.bpm.minValue"
@@ -371,6 +372,9 @@ export default {
   background-color: transparent;
   color: #9AAAAA;
   min-height: 40px;
+}
+.orange{
+  color:#f88d30;
 }
 #enter-key-color{
   background-color:transparent;

@@ -99,7 +99,7 @@ color:#9AAAAA;
   }
 }
 
-@media only screen and (min-width:2500px)
+@media only screen and (min-width:2000px)
 {
   .title-2 {
     font-size:55px !important;
