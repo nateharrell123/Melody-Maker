@@ -172,6 +172,94 @@
 
                 </b-col>
             </b-row>
+
+            <b-row style="melody-form"
+              v-if="$v.keyModeSelected.required && 
+              $v.key.endCharValidation && 
+              $v.key.startCharValidation
+              && $v.measures.required && $v.bpm.required 
+                && $v.bpm.numeric && $v.bpm.maxValue && $v.bpm.minValue
+              "
+            >
+            <!-- who's making it -->
+           <span class="key-title accent-color">Who's writing it?</span>
+            <b-col cols="3">
+                  <b-form-select
+                    class="form__input"
+                    style="width:250px"
+                    id="key-modes-select"
+                    v-model="writer"
+                    :options="writerOptions"
+                  >
+                    <template #first>
+                      <b-form-select-option
+                        id="key-modes-select"
+                        :value="null"
+                        disabled
+                        >Choose your writer</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                  <button class="how-it-works"> <i>who are these people?? </i> </button>
+              <div
+                v-if="!$v.measures.required"
+                class="error"
+                id="error-message"
+              >
+                Measures
+                <span class="accent-color"> are required. </span>
+              </div>
+
+                </b-col>
+                <b-col cols="3" style="padding-left:50px">
+
+              <div
+                v-if="!$v.bpm.required"
+                class="error"
+                id="error-message"
+              >
+                BPM
+                <span class="accent-color"> is required. </span>
+              </div>
+              <div
+                v-if="!$v.bpm.numeric"
+                class="error"
+                id="error-message"
+              >
+                BPM
+                <span class="accent-color"> must be numeric. </span>
+              </div>
+              <div
+                v-if="!$v.bpm.maxValue"
+                class="error"
+                id="error-message"
+              >
+                BPM
+                <span class="accent-color"> can't be more than 220. </span>
+              </div>
+              <div
+                v-if="!$v.bpm.minValue"
+                class="error"
+                id="error-message"
+              >
+                BPM
+                <span class="accent-color"> can't be less than 40.</span>
+              </div>
+                </b-col>
+
+                <b-col cols="3" />
+
+                <b-col cols="3" class="check-image" v-if="$v.measures.required && $v.bpm.required 
+                && $v.bpm.numeric && $v.bpm.maxValue && $v.bpm.minValue
+                " style="padding-right:10px">
+                  <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
+                  href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
+                  <img width="55" alt="Eo circle green checkmark" 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/512px-Eo_circle_green_checkmark.svg.png">
+                  </a>
+                  <div class="success-text">Assigned to: <span class="success-text-display">{{writer}}</span></div>
+                </b-col>
+            </b-row>
             <!-- section three -->
             <!-- <b-row style="melody-form"
               v-if="$v.measures.required"
@@ -304,11 +392,13 @@ export default {
       chordProgression: null,
       creatingMelody: false,
       bpm: null,
+      writer: null,
       keyModes: [
         { value: "Major", text: "Maj" },
         { value: "Minor", text: "Min" },
       ],
       measuresOptions: [1, 2, 4, 8, 16],
+      writerOptions: ["Steve", "Raphael", "Jerry"],
       chordProgressionOptions: ["Yes", "No"],
       chordProgressions: []
     };
@@ -367,6 +457,31 @@ export default {
 </script>
 
 <style scoped>
+.how-it-works{
+  padding-right: 35px;
+  color: #9AAAAA;
+  background:none;
+  outline:none;
+  border:none;
+}
+.how-it-works:hover{
+  color:#1AAAAA;
+}
+.how-it-works::after{
+  content:'';
+  height:2px;
+  width:0%;
+  background-color: #9AAAAA;
+  display:block;
+  transition: .2s ease-in-out;
+}
+.how-it-works:hover::after{
+  content:'';
+  height:2px;
+  width:100%;
+  background-color: #9AAAAA;
+  display:block;
+}
 #key-modes-select {
   font-family: "Montserrat";
   background-color: transparent;

@@ -53,19 +53,19 @@ export default {
 .how-it-works{
   font-size: 45px;
   padding-right: 35px;
-  color: #eb1e82;
+  color: #9AAAAA;
   background:none;
   outline:none;
   border:none;
 }
 .how-it-works:hover{
-  color:#E64E92;
+  color:#9AAAAA;
 }
 .how-it-works::after{
   content:'';
   height:2px;
   width:0%;
-  background-color: #f88d30;
+  background-color: #1AAAAA;
   display:block;
   transition: .2s ease-in-out;
 }
@@ -73,13 +73,13 @@ export default {
   content:'';
   height:2px;
   width:100%;
-  background-color: #f88d30;
+  background-color: #1AAAAA;
   display:block;
 }
   .steel{
   color:#9AAAAA;
   }
-@media only screen and (max-width:600px)
+@media only screen and (max-width:1000px)
 {
   .title-2 {
     font-size:55px !important;
