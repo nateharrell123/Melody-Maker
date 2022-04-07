@@ -250,7 +250,7 @@
                 <b-col cols="3" />
 
                 <b-col cols="3" class="check-image" v-if="$v.measures.required && $v.bpm.required 
-                && $v.bpm.numeric && $v.bpm.maxValue && $v.bpm.minValue && $v.writer.required
+                && $v.bpm.numeric && $v.bpm.maxValue && $v.bpm.minValue && $v.writers.required
                 " style="padding-right:10px">
                   <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
                   href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
