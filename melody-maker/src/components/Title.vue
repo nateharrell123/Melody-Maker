@@ -1,12 +1,12 @@
 <template>
   <header>
     <div class="title" id="fade-out" v-if="!hide"> 
-      <span id="text">Let's get started.</span>
+      <span id="text">Let's make some music.</span>
     </div>
     <div class="title-2" id="fade-in">
       <span id="text-2">melodies.io </span>
-    <div style="float:right;"> <!-- remove dis-->
-    <button class="how-it-works steel">
+    <div class="right"> 
+    <button class="how-it-works">
       how it works
     </button>
     </div>
@@ -34,6 +34,13 @@ export default {
 </script>
 
 <style scoped>
+.accent-color{
+  color:#eb1e82;
+}
+.right{
+  display:inline-block;
+  float:right;
+}
 .title {
   margin-top: 30px;
   font-weight: 550;
@@ -44,18 +51,21 @@ export default {
   transition: transform 1s;
 }
 .how-it-works{
-  text-align:left;
   font-size: 45px;
-  color: white;
+  padding-right: 35px;
+  color: #eb1e82;
   background:none;
   outline:none;
   border:none;
+}
+.how-it-works:hover{
+  color:#E64E92;
 }
 .how-it-works::after{
   content:'';
   height:2px;
   width:0%;
-  background-color: white;
+  background-color: #f88d30;
   display:block;
   transition: .2s ease-in-out;
 }
@@ -66,7 +76,7 @@ color:#9AAAAA;
   content:'';
   height:2px;
   width:100%;
-  background-color: white;
+  background-color: #f88d30;
   display:block;
 }
 @media only screen and (max-width:600px)
@@ -81,6 +91,12 @@ color:#9AAAAA;
     text-align: center !important;
     padding: 0px !important;
   }
+  .right{
+    font-size:35px !important;
+    text-align: center !important;
+    padding: 0px !important;
+    float:none;
+  }
 }
 
 @media only screen and (min-width:2500px)
@@ -94,6 +110,10 @@ color:#9AAAAA;
     font-size:35px !important;
     text-align: center !important;
     padding: 0px !important;
+  }
+  .right{
+    float:none;
+    display:block;
   }
 }
 .title-2{
