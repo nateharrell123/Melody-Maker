@@ -59,7 +59,7 @@ export default {
   border:none;
 }
 .how-it-works:hover{
-  color:#9AAAAA;
+  color:#9DDDDD;
 }
 .how-it-works::after{
   content:'';
