@@ -466,6 +466,7 @@ export default {
   background:none;
   outline:none;
   border:none;
+  white-space:pre;
 }
 .how-it-works:hover{
   color:#9DDDDD;
@@ -543,9 +544,9 @@ export default {
 }
 .card {
   background: #32363b;
-  /* background: white; */
   min-height: 600px;
   margin: auto;
+  box-shadow: 0 0 55px #111;
 }
 .melody-form {
   padding-left: 25px;

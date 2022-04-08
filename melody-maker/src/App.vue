@@ -21,5 +21,6 @@ export default {
 <style>
 body {
   background-color: #222222 !important;
+  /* background-color:white; */
 }
 </style>
