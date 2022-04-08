@@ -1,15 +1,19 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import App from "../App.vue"
-
+import About from "../views/About.vue"
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: App },
+  {
+    path: "/",
+    name: "About",
+    component: About
+  }
 ];
 
 const router = new VueRouter({
+  mode: 'history',
   routes,
 });
 

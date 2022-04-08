@@ -546,7 +546,7 @@ export default {
   background: #32363b;
   min-height: 600px;
   margin: auto;
-  box-shadow: 0 0 55px #111;
+  box-shadow: 0 0 30px 14px #111;
 }
 .melody-form {
   padding-left: 25px;
