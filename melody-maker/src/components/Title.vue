@@ -79,9 +79,9 @@ export default {
   background-color: #1AAAAA;
   display:block;
 }
-  .steel{
+.steel{
   color:#9AAAAA;
-  }
+}
 @media only screen and (max-width:1000px)
 {
   .title-2 {

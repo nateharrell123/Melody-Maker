@@ -200,7 +200,7 @@
                       >
                     </template>
                   </b-form-select>
-                  <button class="how-it-works"> <i>what do you mean who!? </i> </button>
+                  <button @click="toHowItWorks" class="how-it-works"> <i>what do you mean who!? </i> </button>
               <div
                 v-if="!$v.measures.required"
                 class="error"
@@ -411,6 +411,9 @@ export default {
     },
     done(){
       this.creatingMelody = false
+    },
+    toHowItWorks(){
+      this.$router.push("/About")
     }
   },
   created() {
