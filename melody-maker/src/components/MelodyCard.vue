@@ -343,9 +343,9 @@
             <div v-if="creatingMelody" id="melody-create-text" style="padding-top:30px padding-right:25px">
                 Creating melody...
               <!-- <b-spinner class="spinner-color"></b-spinner> -->
-            <button @click="done"> Done </button>
             <div>
-              <MusicPlayer />
+            <button @click="done"> Done </button>
+            <MusicPlayer />
             </div>
             </div>
         </div>
