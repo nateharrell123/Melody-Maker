@@ -343,6 +343,10 @@
             <div v-if="creatingMelody" id="melody-create-text" style="padding-top:30px padding-right:25px">
                 Creating melody...
               <b-spinner class="spinner-color"></b-spinner>
+            <div>
+              hello
+              <MusicPlayer />
+            </div>
             </div>
         </div>
       </b-card>
@@ -354,6 +358,7 @@
 import { required, numeric, maxValue, minValue } from "vuelidate/lib/validators";
 import { bus } from "../main";
 import { mapGetters, mapMutations } from "vuex";
+import MusicPlayer from "./MusicPlayer.vue"
 
 const startCharValidation = (key) => {
   if (!key.charAt(0).match(/^[a-gA-G]+$/)) {
@@ -402,6 +407,9 @@ export default {
       chordProgressionOptions: ["Yes", "No"],
       chordProgressions: []
     };
+  },
+  components:{
+    MusicPlayer
   },
   methods: {
     ...mapMutations(["setFormValidationSectionOne"]),
