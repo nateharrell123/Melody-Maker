@@ -342,12 +342,15 @@
             </div>
             <div v-if="creatingMelody" id="melody-create-text" style="padding-top:30px padding-right:25px">
                 Creating melody...
-              <!-- <b-spinner class="spinner-color"></b-spinner> -->
+              <b-spinner class="spinner-color"></b-spinner>
             <div>
             <button @click="done"> Done </button>
             </div>
             </div>
-            <div v-else> <MusicPlayer /> </div>
+            <div v-else> 
+              {{writers}} delivered you:
+              <MusicPlayer /> 
+            </div>
         </div>
       </b-card>
     </div>
