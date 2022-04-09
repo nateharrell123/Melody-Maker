@@ -345,7 +345,7 @@
               <!-- <b-spinner class="spinner-color"></b-spinner> -->
             <div>
             <button @click="done"> Done </button>
-            <MusicPlayer />
+            <MusicPlayer v-if="melodyCreated"/>
             </div>
             </div>
         </div>
@@ -396,6 +396,7 @@ export default {
       chordProgressionSelection: null,
       chordProgression: null,
       creatingMelody: false,
+      melodyCreated: false,
       bpm: null,
       writers: null,
       keyModes: [
@@ -418,7 +419,7 @@ export default {
       console.log('axios post here')
     },
     done(){
-      this.creatingMelody = !this.creatingMelody
+      this.melodyCreated = true
     },
     toHowItWorks(){
       this.$router.push("/About")
@@ -560,7 +561,7 @@ export default {
 }
 .card {
   background: #32363b;
-  min-height: 1200px;
+  min-height: 700px;
   margin: auto;
   box-shadow: 0 0 30px 14px #111;
 }
