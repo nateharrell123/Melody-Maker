@@ -342,7 +342,7 @@
             </div>
             <div v-if="creatingMelody" id="melody-create-text" style="padding-top:30px padding-right:25px">
                 Creating melody...
-              <b-spinner></b-spinner>
+              <b-spinner class="spinner-color"></b-spinner>
             </div>
         </div>
       </b-card>
@@ -471,6 +471,9 @@ export default {
   border:none;
   white-space:pre;
 }
+.spinner-color{
+  color:#1AAAAA;
+}
 .how-it-works:hover{
   color:#9DDDDD;
 }
@@ -508,6 +511,8 @@ export default {
 #melody-create-text{
   font-family: "Montserrat";
   font-size:18px;
+  color: #9AAAAA;
+
 }
 .success-text{
   font-family: "Montserrat";
