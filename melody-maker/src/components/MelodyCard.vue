@@ -345,9 +345,9 @@
               <!-- <b-spinner class="spinner-color"></b-spinner> -->
             <div>
             <button @click="done"> Done </button>
-            <MusicPlayer v-if="melodyCreated"/>
             </div>
             </div>
+            <div v-else> <MusicPlayer /> </div>
         </div>
       </b-card>
     </div>
@@ -419,7 +419,7 @@ export default {
       console.log('axios post here')
     },
     done(){
-      this.melodyCreated = true
+      this.creatingMelody = !this.creatingMelody
     },
     toHowItWorks(){
       this.$router.push("/About")
