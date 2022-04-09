@@ -342,9 +342,9 @@
             </div>
             <div v-if="creatingMelody" id="melody-create-text" style="padding-top:30px padding-right:25px">
                 Creating melody...
-              <b-spinner class="spinner-color"></b-spinner>
+              <!-- <b-spinner class="spinner-color"></b-spinner> -->
+            <button @click="done"> Done </button>
             <div>
-              hello
               <MusicPlayer />
             </div>
             </div>
@@ -418,7 +418,7 @@ export default {
       console.log('axios post here')
     },
     done(){
-      this.creatingMelody = false
+      this.creatingMelody = !this.creatingMelody
     },
     toHowItWorks(){
       this.$router.push("/About")
@@ -560,7 +560,7 @@ export default {
 }
 .card {
   background: #32363b;
-  min-height: 600px;
+  min-height: 1200px;
   margin: auto;
   box-shadow: 0 0 30px 14px #111;
 }
