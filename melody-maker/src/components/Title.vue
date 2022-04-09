@@ -6,7 +6,7 @@
     <div class="title-2" id="fade-in">
       <span id="text-2">melodies.io </span>
     <div class="right"> 
-    <button class="how-it-works">
+    <button @click="toHowItWorks" class="how-it-works">
       how it works
     </button>
     </div>
@@ -28,6 +28,9 @@ export default {
   methods: {
     activate(){
       setTimeout(() => this.hide = true, 2030)
+    },
+    toHowItWorks(){
+      this.$router.push("/About")
     }
   }
 };

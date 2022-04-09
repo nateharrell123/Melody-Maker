@@ -1,19 +1,20 @@
 <template>
   <div id="app">
-    <Title />
-    <MelodyCard />
+    <router-view name="title"></router-view>
+
+    <router-view></router-view> 
   </div>
 </template>
 
 <script>
-import Title from "@/components/Title.vue";
-import MelodyCard from "@/components/MelodyCard.vue";
+// import Title from "@/components/Title.vue";
+// import MelodyCard from "@/components/MelodyCard.vue";
 
 export default {
   name: "App",
   components: {
-    Title,
-    MelodyCard,
+    // Title,
+    // MelodyCard,
   },
 };
 </script>
