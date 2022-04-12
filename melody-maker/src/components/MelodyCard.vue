@@ -335,7 +335,6 @@
               <b-modal @ok="createMelody" id="modal-1" title="Create your melody">
                 <p class="my-4" id="melody-create-text">Have <span class="accent-color"> {{writers}} </span> create a melody in the key of <span class="accent-color">{{key.toUpperCase()}} {{keyModeSelected}}
                    </span>lasting <span class="accent-color">{{measures}} </span> measures at <span class="accent-color"> {{bpm}} </span> BPM? 
-
                 </p>
               </b-modal>
             </div>
@@ -351,6 +350,7 @@
               {{writers}} delivered you:
               <MusicPlayer /> 
             </div>
+            <a id="downloadFile" download="yourMelody.mid" href="#">Download file </a>
         </div>
       </b-card>
     </div>
@@ -360,7 +360,7 @@
 <script>
 import { required, numeric, maxValue, minValue } from "vuelidate/lib/validators";
 import { bus } from "../main";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 import MusicPlayer from "./MusicPlayer.vue"
 
 const startCharValidation = (key) => {
@@ -417,8 +417,17 @@ export default {
   },
   methods: {
     ...mapMutations(["setFormValidationSectionOne"]),
+    ...mapActions(["createMelody"]),
     createMelody(){
+      var assignment = {
+        key: this.key,
+        keyMode: this.keyModeSelected,
+        measures: this.measures,
+        bpm: this.bpm,
+        writer: this.writers,
+      }
       this.creatingMelody = true
+      this.createMelody({model: assignment})
       console.log('axios post here')
     },
     done(){
@@ -441,15 +450,6 @@ export default {
     key: {
       required,
       startCharValidation,
-      // startCharValidation: (value) => {
-      //   if (!value.charAt(0).match(/^[a-gA-G]+$/)) {
-      //   return false;
-      //   }
-      //   else
-      //   {
-      //   return true;
-      //   }
-      // },
       endCharValidation,
     },
     keyModeSelected: {
