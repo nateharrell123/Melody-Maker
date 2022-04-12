@@ -419,21 +419,17 @@ export default {
     ...mapMutations(["setFormValidationSectionOne"]),
     ...mapActions(["createMelody"]),
     createMelod(){
-      // const assignment = {
-      //   key: this.key,
-      //   keyMode: this.keyModeSelected,
-      //   measures: this.measures,
-      //   bpm: this.bpm,
-      //   writer: this.writers,
-      // }
-      this.creatingMelody = true
-      this.createMelody({model: {
+      const assignment = {
         key: this.key,
         keyMode: this.keyModeSelected,
         measures: this.measures,
         bpm: this.bpm,
         writer: this.writers,
-      }})
+      }
+      console.log(assignment)
+      this.creatingMelody = true
+      // this.createMelody({model: assignment})
+      this.createMelody()
       console.log('axios post here')
     },
     done(){

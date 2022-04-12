@@ -27,6 +27,8 @@ export default new Vuex.Store({
           .get(`https://localhost:5001/Melody/CreateMelody`, model)
           .then((response) => {
             if (response.data) {
+              console.log(`model is ${model}`)
+              console.log(`data is ${response.data}`)
               resolve(response.status)
             }
             else {
