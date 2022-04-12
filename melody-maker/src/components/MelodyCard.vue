@@ -360,7 +360,7 @@
 <script>
 import { required, numeric, maxValue, minValue } from "vuelidate/lib/validators";
 import { bus } from "../main";
-import { mapGetters, mapMutations, mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import MusicPlayer from "./MusicPlayer.vue"
 
 const startCharValidation = (key) => {
@@ -416,20 +416,21 @@ export default {
     MusicPlayer
   },
   methods: {
-    ...mapMutations(["setFormValidationSectionOne"]),
     ...mapActions(["createMelody"]),
     createMelod(){
-      const assignment = {
+      
+      const asn = {
         key: this.key,
         keyMode: this.keyModeSelected,
         measures: this.measures,
         bpm: this.bpm,
         writer: this.writers,
       }
-      console.log(assignment)
+
+      console.log(asn)
+
       this.creatingMelody = true
-      // this.createMelody({model: assignment})
-      this.createMelody()
+      this.createMelody({ assignment: asn })
       console.log('axios post here')
     },
     done(){

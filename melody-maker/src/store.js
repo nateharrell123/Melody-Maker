@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import axios from "axios"
 
 Vue.use(Vuex);
+const config = { headers: {'Content-Type': 'application/json'} };
 
 export default new Vuex.Store({
   state: {
@@ -10,7 +11,7 @@ export default new Vuex.Store({
       sectionOne: false,
       sectionTwo: false,
       sectionThree: false,
-    },
+    }
   },
   getters: {
     getFormValidationSectionOne: (state) => state.formValidation.sectionOne,
@@ -18,16 +19,17 @@ export default new Vuex.Store({
   mutations: {
     setFormValidationSectionOne: (state, data) => {
       state.formValidation.sectionOne = data;
-    },
+    }
   },
   actions: {
-    createMelody: ( { model } ) => 
-      new Promise((resolve, reject) => {
-        axios
-          .get(`https://localhost:5001/Melody/CreateMelody`, model)
+    createMelody: ( { assignment } ) => 
+    new Promise((resolve, reject) => {
+      axios
+      .put(`https://localhost:5001/Melody/CreateMelody`, assignment, config)
           .then((response) => {
+            console.log(`model is ${assignment}`)
+
             if (response.data) {
-              console.log(`model is ${model}`)
               console.log(`data is ${response.data}`)
               resolve(response.status)
             }
