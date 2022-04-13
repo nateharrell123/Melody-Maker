@@ -359,8 +359,9 @@
 
 <script>
 import { required, numeric, maxValue, minValue } from "vuelidate/lib/validators";
+import axios from "axios"
 import { bus } from "../main";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
 import MusicPlayer from "./MusicPlayer.vue"
 
 const startCharValidation = (key) => {
@@ -417,9 +418,10 @@ export default {
   },
   methods: {
     ...mapActions(["createMelody"]),
+    ...mapMutations(["setAssignment"]),
     createMelod(){
       
-      const asn = {
+      var assignment = {
         key: this.key,
         keyMode: this.keyModeSelected,
         measures: this.measures,
@@ -427,11 +429,16 @@ export default {
         writer: this.writers,
       }
 
-      console.log(asn)
+      console.log(typeof(assignment.bpm))
 
-      this.creatingMelody = true
-      this.createMelody({ assignment: asn })
-      console.log('axios post here')
+      axios
+        .post(`https://localhost:5001/Melody/CreateMelody`, assignment,
+            { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } 
+          })
+
+      // this.setAssignment(asn)
+      // this.creatingMelody = true
+      // this.createMelody()
     },
     done(){
       this.creatingMelody = !this.creatingMelody
