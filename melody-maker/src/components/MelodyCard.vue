@@ -432,9 +432,7 @@ export default {
       console.log(typeof(assignment.bpm))
 
       axios
-        .post(`https://localhost:5001/Melody/CreateMelody`, assignment,
-            { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } 
-          })
+        .post(`https://localhost:5001/Melody/CreateMelody`, assignment)
 
       // this.setAssignment(asn)
       // this.creatingMelody = true
