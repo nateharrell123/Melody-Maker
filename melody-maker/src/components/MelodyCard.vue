@@ -76,6 +76,7 @@
                   </a>
                   <div class="success-text">Key Selected: <span class="success-text-display">{{key}} {{keyModeSelected}} </span></div>
                 </b-col>
+                
               </div>
             </b-row>
             <!-- section two -->
@@ -260,70 +261,6 @@
                   <div class="success-text">Assigned to: <span class="success-text-display">{{writers}}</span></div>
                 </b-col>
             </b-row>
-            <!-- section three -->
-            <!-- <b-row style="melody-form"
-              v-if="$v.measures.required"
-            >
-           <span class="key-title">Should the melody follow a chord progression?</span>
-            <div id="key-inner-fields">
-
-            <b-col cols="3">
-                  <b-form-select
-                    class="form__input"
-                    id="key-modes-select"
-                    v-model="chordProgressionSelection"
-                    :options="chordProgressionOptions"
-                  >
-                    <template #first>
-                      <b-form-select-option
-                        id="key-modes-select"
-                        :value="null"
-                        disabled
-                        >Please select an option:</b-form-select-option
-                      >
-                    </template>
-                  </b-form-select>
-
-              <div
-                v-if="!$v.chordProgressionSelection.required"
-                class="error"
-                id="error-message"
-              >
-                Please select an
-                <span class="accent-color"> option. </span>
-              </div>
-                <div style="padding-right: 45px" />
-
-                </b-col>
-                  <b-form-select style="height:30px"
-                  v-if="chordProgressionSelection !== 'No'"
-                    class="form__input"
-                    id="key-modes-select"
-                    v-model="chordProgressionSelection"
-                    :options="chordProgressionOptions"
-                  >
-                    <template #first>
-                      <b-form-select-option
-                        id="key-modes-select"
-                        :value="null"
-                        disabled
-                        >Please select an option:</b-form-select-option
-                      >
-                    </template>
-                  </b-form-select>
-                <b-col cols="3" />
-                <b-col cols="3" v-if="chordProgressionSelection !== 'Yes'" />
-
-                <b-col cols="3" class="check-image" v-if="$v.chordProgressionSelection.required">
-                  <a title="Emoji One, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
-                  href="https://commons.wikimedia.org/wiki/File:Eo_circle_green_checkmark.svg">
-                  <img width="55" alt="Eo circle green checkmark" 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/512px-Eo_circle_green_checkmark.svg.png">
-                  </a>
-                  <div class="success-text">Chord Progression: <span class="success-text-display">{{measures}}</span></div>
-                </b-col>
-              </div>
-            </b-row> -->
             <div class="melody-create"
               v-if="$v.keyModeSelected.required && 
               $v.key.endCharValidation && $v.bpm.required && $v.bpm.numeric 
@@ -345,11 +282,11 @@
             <div>
             </div>
             </div>
-            <div v-else-if="getCreatedMelody"> 
-              {{writers}} delivered you:
-              <MusicPlayer /> 
+            <div v-else-if="getCreatedMelody">
+              <MusicPlayer 
+              :Writer="writers"
+              class="top"/> 
             </div>
-            <a id="downloadFile" download="yourMelody.mid" href="#">Download file </a>
         </div>
       </b-card>
     </div>
@@ -470,7 +407,7 @@ export default {
       required,
       numeric,
       maxValue: maxValue(220),
-      minValue: minValue(40)
+      minValue: minValue(30)
     },
     writers: {
       required
@@ -480,8 +417,15 @@ export default {
 </script>
 
 <style scoped>
+.top{
+  padding-top:15px;
+}
+@media only screen and (max-width:1000px) {
+  .hotfix{
+    
+  }
+}
 .how-it-works{
-  padding-right: 35px;
   color: #9AAAAA;
   background:none;
   outline:none;
