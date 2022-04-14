@@ -330,7 +330,7 @@
               && $v.bpm.maxValue && $v.bpm.minValue && $v.writers.required &&
               $v.key.startCharValidation && $v.measures.required"
             >
-              <b-button v-if="!creatingMelody" v-b-modal.modal-1>Create Melody</b-button>
+              <b-button v-if="!getCreatingMelody" v-b-modal.modal-1>Create Melody</b-button>
 
               <b-modal @ok="createMelod" id="modal-1" title="Create your melody">
                 <p class="my-4" id="melody-create-text">Have <span class="accent-color"> {{writers}} </span> create a melody in the key of <span class="accent-color">{{key.toUpperCase()}} {{keyModeSelected}}
@@ -339,14 +339,16 @@
               </b-modal>
             </div>
             </div>
-            <div v-if="creatingMelody" id="melody-create-text" style="padding-top:30px padding-right:25px">
+            <div v-if="getCreatingMelody" id="melody-create-text" style="padding-top:30px padding-right:25px">
                 Creating melody...
               <b-spinner class="spinner-color"></b-spinner>
             <div>
-            <button @click="done"> Done </button>
             </div>
             </div>
-            <div v-else> 
+            <div v-else-if="$v.keyModeSelected.required && 
+              $v.key.endCharValidation && $v.bpm.required && $v.bpm.numeric 
+              && $v.bpm.maxValue && $v.bpm.minValue && $v.writers.required &&
+              $v.key.startCharValidation && $v.measures.required"> 
               {{writers}} delivered you:
               <MusicPlayer /> 
             </div>
@@ -359,7 +361,7 @@
 
 <script>
 import { required, numeric, maxValue, minValue } from "vuelidate/lib/validators";
-import axios from "axios"
+// import axios from "axios"
 import { bus } from "../main";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 import MusicPlayer from "./MusicPlayer.vue"
@@ -429,14 +431,14 @@ export default {
         writer: this.writers,
       }
 
-      console.log(typeof(assignment.bpm))
+      assignment.bpm = Number(assignment.bpm)
+      // axios
+      //   .post(`https://localhost:5001/Melody/CreateMelody`, assignment)
 
-      axios
-        .post(`https://localhost:5001/Melody/CreateMelody`, assignment)
-
-      // this.setAssignment(asn)
-      // this.creatingMelody = true
-      // this.createMelody()
+      this.setAssignment(assignment)
+      this.creatingMelody = true
+      this.createMelody()
+      this.creatingMelody = false
     },
     done(){
       this.creatingMelody = !this.creatingMelody
@@ -452,7 +454,7 @@ export default {
 
   },
   computed: {
-    ...mapGetters(["getFormValidationSectionOne"]),
+    ...mapGetters(["getCreatingMelody"]),
   },
   validations: {
     key: {
