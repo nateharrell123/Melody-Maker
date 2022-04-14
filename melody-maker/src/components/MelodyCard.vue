@@ -345,10 +345,7 @@
             <div>
             </div>
             </div>
-            <div v-else-if="$v.keyModeSelected.required && 
-              $v.key.endCharValidation && $v.bpm.required && $v.bpm.numeric 
-              && $v.bpm.maxValue && $v.bpm.minValue && $v.writers.required &&
-              $v.key.startCharValidation && $v.measures.required"> 
+            <div v-else-if="getCreatedMelody"> 
               {{writers}} delivered you:
               <MusicPlayer /> 
             </div>
@@ -436,9 +433,7 @@ export default {
       //   .post(`https://localhost:5001/Melody/CreateMelody`, assignment)
 
       this.setAssignment(assignment)
-      this.creatingMelody = true
       this.createMelody()
-      this.creatingMelody = false
     },
     done(){
       this.creatingMelody = !this.creatingMelody
@@ -454,7 +449,7 @@ export default {
 
   },
   computed: {
-    ...mapGetters(["getCreatingMelody"]),
+    ...mapGetters(["getCreatingMelody", "getCreatedMelody"]),
   },
   validations: {
     key: {

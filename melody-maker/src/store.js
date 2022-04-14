@@ -14,9 +14,11 @@ export default new Vuex.Store({
       writer: "",
     },
     creatingMelody: false,
+    createdMelody: false
   },
   getters: {
     getCreatingMelody: (state) => state.creatingMelody,
+    getCreatedMelody: (state) => state.createdMelody,
   },
   mutations: {
     setAssignment: (state, data) => {
@@ -36,6 +38,7 @@ export default new Vuex.Store({
             if (response.data) {
               resolve(response.status)
               state.creatingMelody = false
+              state.createdMelody = true
             }
             else {
               reject()
