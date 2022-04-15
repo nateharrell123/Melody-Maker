@@ -34,23 +34,21 @@ export default new Vuex.Store({
       state.creatingMelody = true
       axios
       .post(`https://localhost:5001/Melody/CreateMelody`, state.assignment)
-          // .then((response) => {
-          //   if (response.data) {
-          //     console.log("Accepted")
-          //     resolve(response.status)
-          //     state.creatingMelody = false
-          //     state.createdMelody = true
-          //   }
-          //   else {
-          //     console.log("No data")
-          //     reject()
-          //   }
-          // })
-          .then(() => {
-            state.creatingMelody = false
-            state.createdMelody = true
-            resolve()
+          .then((response) => {
+            if (response.data) {
+              resolve(response.status)
+              state.creatingMelody = false
+              state.createdMelody = true
+            }
+            else {
+              reject()
+            }
           })
+          // .then(() => {
+          //   state.creatingMelody = false
+          //   state.createdMelody = true
+          //   resolve()
+          // })
           .catch(() => {
             console.log("Rejected")
             reject()
