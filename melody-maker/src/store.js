@@ -13,12 +13,14 @@ export default new Vuex.Store({
       bpm: 0,
       writer: "",
     },
+    assignmentResponse: {},
     creatingMelody: false,
     createdMelody: false
   },
   getters: {
     getCreatingMelody: (state) => state.creatingMelody,
     getCreatedMelody: (state) => state.createdMelody,
+    getAssignmentResponse: (state) => state.assignmentResponse
   },
   mutations: {
     setAssignment: (state, data) => {
@@ -26,10 +28,13 @@ export default new Vuex.Store({
     },
     setCreatingMelody: (state, data) => {
       state.creatingMelody = data
+    },
+    setAssignmentResponse: (state, data) => {
+      state.assignmentResponse = data
     }
   },
   actions: {
-    createMelody: ({state}) => 
+    createMelody: ({state, commit}) => 
     new Promise((resolve, reject) => {
       state.creatingMelody = true
       axios
@@ -37,6 +42,8 @@ export default new Vuex.Store({
           .then((response) => {
             if (response.data) {
               resolve(response.status)
+              commit('setAssignmentResponse', response)
+
               state.creatingMelody = false
               state.createdMelody = true
             }

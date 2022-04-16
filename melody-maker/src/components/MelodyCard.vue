@@ -366,8 +366,6 @@ export default {
       }
 
       assignment.bpm = Number(assignment.bpm)
-      // axios
-      //   .post(`https://localhost:5001/Melody/CreateMelody`, assignment)
 
       this.setAssignment(assignment)
       this.createMelody()

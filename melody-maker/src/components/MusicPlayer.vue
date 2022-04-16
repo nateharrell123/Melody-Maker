@@ -10,15 +10,27 @@
         sound-font visualizer="#myVisualizer">
         </midi-player>
         <a id="downloadFile" download="yourMelody.mid" href="#">Download file </a>
+
+        <button @click="test"> Click me! </button>
     </div>
 </template>
 
 <script>
 import 'html-midi-player'
+import { mapGetters } from "vuex";
+
 export default {
     name: "MusicPlayer",
     props: {
         Writer: String
+    },
+    computed: {
+        ...mapGetters(["getAssignmentResponse"])
+    },
+    methods: {
+        test(){
+            console.log(this.getAssignmentResponse)
+        }
     }
 }
 </script>
