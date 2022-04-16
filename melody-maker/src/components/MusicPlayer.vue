@@ -9,7 +9,7 @@
         src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
         sound-font visualizer="#myVisualizer">
         </midi-player>
-        <a id="downloadFile" download="yourMelody.mid" href="#">Download file </a>
+        <a id="downloadFile" download="new-test.mid" href="#">Download file </a>
 
         <button @click="test"> Click me! </button>
     </div>
@@ -25,12 +25,25 @@ export default {
         Writer: String
     },
     computed: {
-        ...mapGetters(["getAssignmentResponse"])
+        ...mapGetters(["getAssignmentResponse"]),
     },
     methods: {
         test(){
-            console.log(this.getAssignmentResponse)
-        }
+            const downloadFile = document.getElementById('downloadFile');
+
+            var str = JSON.stringify(this.getAssignmentResponse)
+            var bytes = new TextEncoder().encode(str)
+            var assignmentBlob = new Blob([bytes], {
+                type: "application/json;charset=utf-8"
+            });
+            
+            var assignmentObjectURL = URL.createObjectURL(assignmentBlob);
+
+            downloadFile.href = assignmentObjectURL;
+            console.log(`url is ${assignmentObjectURL}`)
+            console.log(`href is ${downloadFile.href}`)
+
+        }   
     }
 }
 </script>
