@@ -32,6 +32,7 @@ export default {
             const downloadFile = document.getElementById('downloadFile');
 
             var str = JSON.stringify(this.getAssignmentResponse)
+            console.log(`obj response as str: ${str}`)
             var bytes = new TextEncoder().encode(str)
             var assignmentBlob = new Blob([bytes], {
                 type: "application/json;charset=utf-8"

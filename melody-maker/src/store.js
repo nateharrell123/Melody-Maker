@@ -42,7 +42,7 @@ export default new Vuex.Store({
           .then((response) => {
             if (response.data) {
               resolve(response.status)
-              commit('setAssignmentResponse', response)
+              commit('setAssignmentResponse', response.data)
 
               state.creatingMelody = false
               state.createdMelody = true
