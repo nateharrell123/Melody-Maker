@@ -31,18 +31,12 @@ export default {
         test(){
             const downloadFile = document.getElementById('downloadFile');
 
-            var str = JSON.stringify(this.getAssignmentResponse)
-            console.log(`obj response as str: ${str}`)
-            var bytes = new TextEncoder().encode(str)
-            var assignmentBlob = new Blob([bytes], {
-                type: "application/json;charset=utf-8"
-            });
-            
-            var assignmentObjectURL = URL.createObjectURL(assignmentBlob);
-
-            downloadFile.href = assignmentObjectURL;
-            console.log(`url is ${assignmentObjectURL}`)
-            console.log(`href is ${downloadFile.href}`)
+            var str = this.getAssignmentResponse;
+            const linkSource = `data:application/midi;base64,${str}`;
+            //var assignmentObjectURL = URL.createObjectURL(assignmentBlob);
+            downloadFile.href = linkSource;
+            // console.log(`url is ${assignmentObjectURL}`)
+            // console.log(`href is ${downloadFile.href}`)
 
         }   
     }
