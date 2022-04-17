@@ -1,12 +1,14 @@
 <template>
+    <!-- src="https://magenta.github.io/magenta-js/music/demos/melody.mid" -->
     <div>
         <span class="deliver-message"> 
             <span class="blue"> {{Writer}} </span>
              delivered you: 
             </span>
         <midi-player
+        id="media-player"
         class="music-player"
-        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        src="#"
         sound-font visualizer="#myVisualizer">
         </midi-player>
         <a @click="setLink" id="downloadFile" download="new-test.mid" href="#">Download file </a>
@@ -29,9 +31,12 @@ export default {
         setLink(){
             console.log("clicked")
             const downloadFile = document.getElementById('downloadFile');
+            const mediaPlayer = document.getElementById('media-player');
             var str = this.getAssignmentResponse;
             const linkSource = `data:application/midi;base64,${str}`;
+
             downloadFile.href = linkSource;
+            mediaPlayer.src = linkSource;
         }   
     }
 }
