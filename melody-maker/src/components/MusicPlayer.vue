@@ -8,10 +8,11 @@
         <midi-player
         id="media-player"
         class="music-player"
-        src="#"
+        :src="setMelody"
         sound-font visualizer="#myVisualizer">
         </midi-player>
-        <a @click="setLink" id="downloadFile" download="new-test.mid" href="#">Download file </a>
+        <a id="downloadFile" download="new-test.mid" :href="setMelody">Download file </a>
+        <!-- <button @click="setLink"> Testing </button> -->
     </div>
 </template>
 
@@ -26,12 +27,17 @@ export default {
     },
     computed: {
         ...mapGetters(["getAssignmentResponse"]),
+        setMelody(){
+            var str = this.getAssignmentResponse;
+            const linkSource = `data:application/midi;base64,${str}`;
+            return linkSource
+        }
     },
     methods: {
         setLink(){
-            console.log("clicked")
             const downloadFile = document.getElementById('downloadFile');
             const mediaPlayer = document.getElementById('media-player');
+
             var str = this.getAssignmentResponse;
             const linkSource = `data:application/midi;base64,${str}`;
 
