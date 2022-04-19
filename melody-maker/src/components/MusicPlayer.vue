@@ -1,5 +1,4 @@
 <template>
-    <!-- src="https://magenta.github.io/magenta-js/music/demos/melody.mid" -->
     <div>
         <span class="deliver-message"> 
             <span class="blue"> {{Writer}} </span>
@@ -12,7 +11,6 @@
         sound-font visualizer="#myVisualizer">
         </midi-player>
         <a id="downloadFile" download="new-test.mid" :href="setMelody">Download file </a>
-        <!-- <button @click="setLink"> Testing </button> -->
     </div>
 </template>
 
@@ -33,18 +31,6 @@ export default {
             return linkSource
         }
     },
-    methods: {
-        setLink(){
-            const downloadFile = document.getElementById('downloadFile');
-            const mediaPlayer = document.getElementById('media-player');
-
-            var str = this.getAssignmentResponse;
-            const linkSource = `data:application/midi;base64,${str}`;
-
-            downloadFile.href = linkSource;
-            mediaPlayer.src = linkSource;
-        }   
-    }
 }
 </script>
 
