@@ -366,6 +366,7 @@ export default {
       }
 
       assignment.bpm = Number(assignment.bpm)
+      assignment.key.toUpperCase()
 
       this.setAssignment(assignment)
       this.createMelody()
