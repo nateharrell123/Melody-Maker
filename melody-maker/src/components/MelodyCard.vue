@@ -287,6 +287,9 @@
               :Writer="writers"
               class="top"/> 
             </div>
+            <div v-else-if="getMelodyError" class="error-message">
+              {{errorMessage()}}
+            </div>
         </div>
       </b-card>
     </div>
@@ -374,6 +377,27 @@ export default {
     done(){
       this.creatingMelody = !this.creatingMelody
     },
+    errorMessage(){
+    var randomNumber = Math.floor(Math.random() * 5)
+    var message = ""
+      if (randomNumber === 1)
+      {
+        message = `Sorry, ${this.writers} is slackin'. Please try again.`
+      }
+      else if (randomNumber === 2)
+      {
+        message = `It looks like ${this.writers} is on lunch (or strike).. Please try again.`
+      }
+      else if (randomNumber === 3)
+      {
+        message = ``
+      }
+      else if (randomNumber === 4)
+      {
+        message = "Four"
+      }
+      return message;
+    },
     toHowItWorks(){
       this.$router.push("/About")
     }
@@ -385,7 +409,7 @@ export default {
 
   },
   computed: {
-    ...mapGetters(["getCreatingMelody", "getCreatedMelody"]),
+    ...mapGetters(["getCreatingMelody", "getCreatedMelody", "getMelodyError"]),
   },
   validations: {
     key: {
@@ -425,6 +449,13 @@ export default {
   }
 }
 .how-it-works{
+  color: #9AAAAA;
+  background:none;
+  outline:none;
+  border:none;
+  white-space:pre;
+}
+.error-message{
   color: #9AAAAA;
   background:none;
   outline:none;

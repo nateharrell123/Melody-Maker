@@ -18,13 +18,13 @@ export default new Vuex.Store({
     assignmentResponse: {},
     creatingMelody: false,
     createdMelody: false,
-    melodySuccessful: false
+    melodyError: false
   },
   getters: {
     getCreatingMelody: (state) => state.creatingMelody,
     getCreatedMelody: (state) => state.createdMelody,
     getAssignmentResponse: (state) => state.assignmentResponse,
-    getMelodySuccessful: (state) => state.melodySuccessful
+    getMelodyError: (state) => state.melodyError
   },
   mutations: {
     setAssignment: (state, data) => {
@@ -35,9 +35,6 @@ export default new Vuex.Store({
     },
     setAssignmentResponse: (state, data) => {
       state.assignmentResponse = data
-    },
-    setMelodySuccessful: (state, data) => {
-      state.melodySuccessful = data
     }
   },
   actions: {
@@ -53,10 +50,13 @@ export default new Vuex.Store({
 
               state.creatingMelody = false
               state.createdMelody = true
+              state.melodyError = false
             }
             else {
               reject()
-              state.createdMelody = true
+              state.creatingMelody = false
+              state.createdMelody = false
+              state.melodyError = true
             }
           })
           // .then(() => {
@@ -65,8 +65,10 @@ export default new Vuex.Store({
           //   resolve()
           // })
           .catch(() => {
-            console.log("Rejected")
             reject()
+            state.creatingMelody = false
+            state.createdMelody = false
+            state.melodyError = true
             // error handling goes here
           })
       }),
