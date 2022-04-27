@@ -21,7 +21,8 @@ import { mapGetters } from "vuex";
 export default {
     name: "MusicPlayer",
     props: {
-        Writer: String
+        Writer: String,
+        
     },
     computed: {
         ...mapGetters(["getAssignmentResponse"]),

@@ -357,7 +357,7 @@ export default {
   },
   methods: {
     ...mapActions(["createMelody"]),
-    ...mapMutations(["setAssignment"]),
+    ...mapMutations(["setAssignment", "setAssignedWriter"]),
     createMelod(){
       
       var assignment = {
@@ -372,6 +372,7 @@ export default {
       assignment.key.toUpperCase()
 
       this.setAssignment(assignment)
+      this.setAssignedWriter(assignment.writer)
       this.createMelody()
     },
     done(){
@@ -382,19 +383,23 @@ export default {
     var message = ""
       if (randomNumber === 1)
       {
-        message = `Sorry, ${this.writers} is slackin'. Please try again.`
+        message = `Sorry, ${this.getAssignedWriter} is slackin'. Please try again.`
       }
       else if (randomNumber === 2)
       {
-        message = `It looks like ${this.writers} is on lunch (or strike).. Please try again.`
+        message = `It looks like ${this.getAssignedWriter} is on lunch (or strike).. Please try again.`
       }
       else if (randomNumber === 3)
       {
-        message = ``
+        message = `${this.getAssignedWriter} fell asleep at their desk (long night), please try again.`
       }
       else if (randomNumber === 4)
       {
-        message = "Four"
+        message = `${this.getAssignedWriter} tripped while writing your melody, please try again.`
+      }
+      else 
+      {
+        message = `Something went horribly wrong :/ please try again.`
       }
       return message;
     },
@@ -409,7 +414,7 @@ export default {
 
   },
   computed: {
-    ...mapGetters(["getCreatingMelody", "getCreatedMelody", "getMelodyError"]),
+    ...mapGetters(["getCreatingMelody", "getCreatedMelody", "getMelodyError", "getAssignedWriter"]),
   },
   validations: {
     key: {

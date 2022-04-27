@@ -18,12 +18,14 @@ export default new Vuex.Store({
     assignmentResponse: {},
     creatingMelody: false,
     createdMelody: false,
-    melodyError: false
+    melodyError: false,
+    assignedWriter: "",
   },
   getters: {
     getCreatingMelody: (state) => state.creatingMelody,
     getCreatedMelody: (state) => state.createdMelody,
     getAssignmentResponse: (state) => state.assignmentResponse,
+    getAssignedWriter: (state) => state.assignedWriter,
     getMelodyError: (state) => state.melodyError
   },
   mutations: {
@@ -35,6 +37,9 @@ export default new Vuex.Store({
     },
     setAssignmentResponse: (state, data) => {
       state.assignmentResponse = data
+    },
+    setAssignedWriter: (state, data) => {
+      state.assignedWriter = data
     }
   },
   actions: {
@@ -47,6 +52,7 @@ export default new Vuex.Store({
             if (response.data) {
               resolve(response.status)
               commit('setAssignmentResponse', response.data)
+              commit('setAssignedWriter', response.data.writer)
 
               state.creatingMelody = false
               state.createdMelody = true
