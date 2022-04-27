@@ -8,9 +8,10 @@
         id="media-player"
         class="music-player"
         :src="setMelody"
-        sound-font visualizer="#myVisualizer">
+        sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+        visualizer="#myVisualizer">
         </midi-player>
-        <a id="downloadFile" download="new-test.mid" :href="setMelody">Download file </a>
+        <a id="downloadFile" download="melodies.io.mid" :href="setMelody">Download file </a>
     </div>
 </template>
 
@@ -22,7 +23,7 @@ export default {
     name: "MusicPlayer",
     props: {
         Writer: String,
-        
+
     },
     computed: {
         ...mapGetters(["getAssignmentResponse"]),
