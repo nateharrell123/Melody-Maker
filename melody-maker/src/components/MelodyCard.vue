@@ -357,7 +357,8 @@ export default {
   },
   methods: {
     ...mapActions(["createMelody"]),
-    ...mapMutations(["setAssignment", "setAssignedWriter"]),
+    ...mapMutations(["setAssignment", "setAssignedWriter", "setCreatedMelody",
+    "setCreatingMelody"]),
     createMelod(){
       
       var assignment = {
@@ -369,7 +370,7 @@ export default {
       }
 
       assignment.bpm = Number(assignment.bpm)
-      assignment.key.toUpperCase()
+      console.log(assignment)
 
       this.setAssignment(assignment)
       this.setAssignedWriter(assignment.writer)
@@ -404,6 +405,7 @@ export default {
       return message;
     },
     toHowItWorks(){
+      this.setCreatedMelody(false)
       this.$router.push("/About")
     }
   },
@@ -414,7 +416,8 @@ export default {
 
   },
   computed: {
-    ...mapGetters(["getCreatingMelody", "getCreatedMelody", "getMelodyError", "getAssignedWriter"]),
+    ...mapGetters(["getCreatingMelody", "getCreatedMelody", "getMelodyError", "getAssignedWriter",
+    "getHasVisited"]),
   },
   validations: {
     key: {
