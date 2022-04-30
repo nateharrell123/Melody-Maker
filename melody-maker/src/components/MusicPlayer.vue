@@ -23,7 +23,6 @@ export default {
     name: "MusicPlayer",
     props: {
         Writer: String,
-
     },
     computed: {
         ...mapGetters(["getAssignmentResponse"]),

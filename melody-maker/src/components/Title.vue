@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "Title",
   data(){
@@ -29,7 +30,9 @@ export default {
     activate(){
       setTimeout(() => this.hide = true, 2030)
     },
+    ...mapMutations(["setCreatedMelody"]),
     toHowItWorks(){
+      this.setCreatedMelody(false)
       this.$router.push("/About")
     }
   }

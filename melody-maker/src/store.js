@@ -19,6 +19,7 @@ export default new Vuex.Store({
     creatingMelody: false,
     createdMelody: false,
     melodyError: false,
+    hasVisited: false,
     assignedWriter: "",
   },
   getters: {
@@ -26,7 +27,8 @@ export default new Vuex.Store({
     getCreatedMelody: (state) => state.createdMelody,
     getAssignmentResponse: (state) => state.assignmentResponse,
     getAssignedWriter: (state) => state.assignedWriter,
-    getMelodyError: (state) => state.melodyError
+    getMelodyError: (state) => state.melodyError,
+    getHasVisited: (state) => state.hasVisited
   },
   mutations: {
     setAssignment: (state, data) => {
@@ -35,17 +37,24 @@ export default new Vuex.Store({
     setCreatingMelody: (state, data) => {
       state.creatingMelody = data
     },
+    setCreatedMelody: (state, data) => {
+      state.createdMelody = data;
+    },
     setAssignmentResponse: (state, data) => {
       state.assignmentResponse = data
     },
     setAssignedWriter: (state, data) => {
       state.assignedWriter = data
+    },
+    setHasVisited: (state, data) => {
+      state.hasVisited = data;
     }
   },
   actions: {
     createMelody: ({state, commit}) => 
     new Promise((resolve, reject) => {
       state.creatingMelody = true
+      console.log(API_URL)
       axios
       .post(`${API_URL}/Melody/CreateMelody`, state.assignment)
           .then((response) => {
