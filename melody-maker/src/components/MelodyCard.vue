@@ -346,7 +346,7 @@ export default {
         { value: "Minor", text: "Min" },
       ],
       measuresOptions: [1, 2, 4, 8, 16],
-      writerOptions: ["Steve", "Raphael", "Jerry"],
+      writerOptions: ["Steve (ง^ᗜ^)ง", "Raphael ( ͡° ͜ʖ ͡°)", "Jerry  (¬‿¬)"],
       chordProgressionOptions: ["Yes", "No"],
       chordProgressions: []
     };
