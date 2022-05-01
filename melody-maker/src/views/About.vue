@@ -1,7 +1,14 @@
 <template>
   <div class="title">
+    <b-row>
+      <b-col cols="6">
     <HowItWorksTitle
     style="padding-bottom:30px;" />
+      </b-col>
+      <b-col cols="6">
+        <button> click me </button>
+      </b-col>
+    </b-row>
       <b-row>
         <b-col cols="1" />
         <b-col cols="10">
@@ -118,8 +125,8 @@
                     </span>
                   </code>
                 </body>
-                Jerry constructs his melodies with either <span class="accent-color-blue">dotted quarter notes </span>
-                , <span class="accent-color-blue"> quarter notes</span>, <span class="accent-color-blue"> eighth notes </span>, or <span class="accent-color-blue"> triplets </span>.
+                Jerry constructs his melodies with either <span class="accent-color-blue">dotted quarter notes</span>
+                ,<span class="accent-color-blue"> quarter notes</span>, <span class="accent-color-blue"> eighth notes </span>, or <span class="accent-color-blue"> triplets </span>.
               </ul>
             </ul>
           </b-card>

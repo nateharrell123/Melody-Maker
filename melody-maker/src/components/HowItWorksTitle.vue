@@ -26,11 +26,9 @@ export default {
 
 <style scoped>
 .title{
-  margin-top: 30px;
   font-family: "Montserrat";
   text-align:left;
   font-size: 75px;
-  padding-left:55px;
   color:white;
 }
 #title-text{
