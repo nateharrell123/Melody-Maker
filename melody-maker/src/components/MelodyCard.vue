@@ -187,7 +187,7 @@
             <b-col cols="3">
                   <b-form-select
                     class="form__input"
-                    style="width:250px"
+                    style=""
                     id="key-modes-select"
                     v-model="writers"
                     :options="writerOptions"
@@ -284,7 +284,6 @@
             </div>
             <div v-else-if="getCreatedMelody">
               <MusicPlayer 
-              :Writer="writers"
               class="top"/> 
             </div>
             <div v-else-if="getMelodyError" class="error-message">
@@ -373,7 +372,8 @@ export default {
       console.log(assignment)
 
       this.setAssignment(assignment)
-      this.setAssignedWriter(assignment.writer)
+      this.setAssignedWriter(this.writers)
+      console.log(`assigned writer is ${this.getAssignedWriter}`)
       this.createMelody()
     },
     done(){
@@ -462,6 +462,7 @@ export default {
   outline:none;
   border:none;
   white-space:pre;
+  /* display:contents; */
 }
 .error-message{
   color: #9AAAAA;

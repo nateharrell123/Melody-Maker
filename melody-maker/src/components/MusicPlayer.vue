@@ -1,7 +1,7 @@
 <template>
     <div>
         <span class="deliver-message"> 
-            <span class="blue"> {{Writer}} </span>
+            <span class="blue"> {{getAssignedWriter}} </span>
              delivered you: 
             </span>
         <midi-player
@@ -25,7 +25,7 @@ export default {
         Writer: String,
     },
     computed: {
-        ...mapGetters(["getAssignmentResponse"]),
+        ...mapGetters(["getAssignmentResponse" ,"getAssignedWriter"]),
         setMelody(){
             var str = this.getAssignmentResponse;
             const linkSource = `data:application/midi;base64,${str}`;

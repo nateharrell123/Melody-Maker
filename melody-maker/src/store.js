@@ -20,7 +20,7 @@ export default new Vuex.Store({
     createdMelody: false,
     melodyError: false,
     hasVisited: false,
-    assignedWriter: "",
+    assignedWriter: "hi",
   },
   getters: {
     getCreatingMelody: (state) => state.creatingMelody,
@@ -59,9 +59,10 @@ export default new Vuex.Store({
       .post(`${API_URL}/Melody/CreateMelody`, state.assignment)
           .then((response) => {
             if (response.data) {
+              console.log(`in store, writer is ${response.data.writer}`)
+
               resolve(response.status)
               commit('setAssignmentResponse', response.data)
-              commit('setAssignedWriter', response.data.writer)
 
               state.creatingMelody = false
               state.createdMelody = true
