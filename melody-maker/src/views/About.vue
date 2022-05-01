@@ -28,7 +28,7 @@
               <br />
               <body class="code-snippet">
               <code class="prettyprint"> 
-                <span class="accent-color-pink">* pattern</span>.<span class="accent-color-orange">Note</span><span class="accent-color-grey">(key[phrase1[i]],</span> <span class="accent-color-blue">MusicalTimeSpan</span>.Eighth<span class="accent-color-grey">);</span> 
+                <span class="accent-color-pink">pattern</span>.<span class="accent-color-orange">Note</span><span class="accent-color-grey">(key[phrase1[i]],</span> <span class="accent-color-blue">MusicalTimeSpan</span>.Eighth<span class="accent-color-grey">);</span> 
               </code>
               </body>
               or by strategically placing
@@ -37,20 +37,20 @@
               <br />
               <body class="code-snippet">
               <code class="prettyprint">
-               * <span class="accent-color-blue">int[]</span> chordTones = <span class="accent-color-blue">new int[4]</span>  <span class="accent-color-grey">{ 0, 2, 4, 7 };</span> <span class="accent-color-green"> // 1, 3, 5, 8</span> <br/>
-                * pattern.<span class="accent-color-orange">Note</span><span class="accent-color-grey">(key[chordTones[StaticRandom.Instance.Next(0, 4)]], </span><span class="accent-color-blue">MusicalTimeSpan</span>.Eighth);
+               <span class="accent-color-blue">int[]</span> chordTones = <span class="accent-color-blue">new int[4]</span>  <span class="accent-color-grey">{ 0, 2, 4, 7 };</span> <span class="accent-color-green"> // 1, 3, 5, 8</span> <br/>
+                pattern.<span class="accent-color-orange">Note</span><span class="accent-color-grey">(key[chordTones[StaticRandom.Instance.Next(0, 4)]], </span><span class="accent-color-blue">MusicalTimeSpan</span>.Eighth);
               </code>
               </body>
               Steve will produce a <span class="accent-color-pink">"high energy, arpeggio-like"</span> melody, with <span class="accent-color-pink">conjunct phrases</span> being sprinkled in:
               <body class="code-snippet">
                 <code>
-            <span class="accent-color-blue">int[] </span> phrase1 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 1, 0, 1, 2 };</span>
+            <span class="accent-color-blue">int[] </span> phrase1 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 1, 0, 1, 2 };</span> <span class="accent-color-green">// 2, 1, 2, 3 </span>
             <br/>
-            <span class="accent-color-blue">int[] </span> phrase2 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 5, 4, 3, 4 };</span>
+            <span class="accent-color-blue">int[] </span> phrase2 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 5, 4, 3, 4 };</span> <span class="accent-color-green">// 6, 5, 4, 5 </span>
             <br/>
-            <span class="accent-color-blue">int[] </span> phrase3 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 5, 6, 5, 4 };</span>
+            <span class="accent-color-blue">int[] </span> phrase3 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 5, 6, 5, 4 };</span> <span class="accent-color-green">// 6, 7, 6, 5 </span>
             <br/>
-            <span class="accent-color-blue">int[] </span> phrase4 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 2, 1, 2, 4 };</span>
+            <span class="accent-color-blue">int[] </span> phrase4 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 2, 1, 2, 4 };</span> <span class="accent-color-green">// 3, 2, 3, 5 </span>
             <br/>
             <span class="accent-color-green">// ...</span>
                 </code>
@@ -76,7 +76,7 @@
                 <span class="accent-color-grey">}</span>
                   </code>
                 </body>
-                As for what goes between the phrases, similar to Steve, Raphael has his own arsenal of <span class="accent-color-pink"> conjunct phrases</span>:
+                As for what goes between the phrases, similar to <span class="accent-color-pink">Steve</span>, Raphael has his own arsenal of <span class="accent-color-pink"> conjunct phrases</span>:
             <body class="code-snippet">
               <code>
                 <span class="accent-color-blue">int[] </span> phrase1 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 2, 7, 7, 2 };</span>
@@ -118,8 +118,9 @@
                     </span>
                   </code>
                 </body>
+                Jerry constructs his melodies with either <span class="accent-color-blue">dotted quarter notes </span>
+                , <span class="accent-color-blue"> quarter notes</span>, <span class="accent-color-blue"> eighth notes </span>, or <span class="accent-color-blue"> triplets </span>.
               </ul>
-
             </ul>
           </b-card>
         </b-col>
