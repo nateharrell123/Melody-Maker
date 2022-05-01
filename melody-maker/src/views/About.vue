@@ -92,9 +92,33 @@
               </body>
                 He constructs his melodies with either <span class="accent-color-blue"> quarter </span> or <span class="accent-color-blue"> eighth </span> notes.
               </ul>
+            <hr class="line" />
+
               <li class="content-card-text"> <span class="writer3-text">Jerry </span>
                 (¬‿¬)
               </li>
+              <ul class="content-card-text">
+                <span class="accent-color-orange"> Jerry </span> 
+                is a bit more virtuosic compared to Steve & Raphael. Rather than determing rhythm 
+                based on position, <span class="accent-color-blue">Jerry will dictate some of his notes based on what has been placed before: </span>
+                <body class="code-snippet">
+                  <code>
+                    if <span class="accent-color-grey">(noteCounter == 0)</span>
+                    <br/>
+                    <span class="accent-color-grey">{</span>
+                      <br/>
+                        <span style="padding-right:35px;"/> pattern.<span class="accent-color-orange">Note</span><span class="accent-color-grey">(key[phrase1[i]], </span><span class="accent-color-blue">MusicalTimeSpan</span><span class="accent-color-grey">.</span><span class="accent-color-grey"><span class="accent-color-pink">Quarter</span>.</span><span class="accent-color-orange">Dotted</span><span class="accent-color-grey">(<span class="accent-color-green">1</span>));</span>
+                      <br/>
+                      <span class="accent-color-grey">
+                        <span style="padding-right:35px;"/> melodyLength += .375;
+                      <br/>
+                        <span style="padding-right:35px;"/> noteCounter++;
+                    <br/>
+                    }
+                    </span>
+                  </code>
+                </body>
+              </ul>
 
             </ul>
           </b-card>
