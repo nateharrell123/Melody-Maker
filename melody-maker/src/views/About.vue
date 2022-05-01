@@ -11,34 +11,24 @@
             </h1>
             <hr class="line" />
             <p class="content-card-text">
-              Melodies.io assigns your melody to three "writers/composers":
+              <span class="accent-color-pink">Melodies</span>.<span class="accent-color-orange">io</span> assigns your melody to three "writers/composers":
             </p>
             <ul>
               <li class="content-card-text"> <span class="writer2-text"> Steve </span>
                 (ง^ᗜ^)ง
               </li>
             <ul class="content-card-text">
-              <!-- <span class="accent-color-pink">Steve</span> plays a 
+              <span class="accent-color-pink">Steve</span> plays a 
               <span class="accent-color-red"> LOT </span>
               of arcade video games. He enjoys the <span class="accent-color-pink"> fast paced, high energy </span>
               stuff.
-              He favors eighth note rhythms: <br/>
-              <code> pattern.Note(key[phrase1[i]], MusicalTimeSpan.Eighth); </code>
+              He favors eighth note rhythms:<pre class="prettyprint"> <span class="accent-color-pink">pattern</span>.<span class="accent-color-orange">Note</span>(key[phrase1[i]], <span class="accent-color-blue">MusicalTimeSpan</span>.Eighth); </pre>
+and revolving around <span class="accent-color-pink"> chord tones: </span>
               <br />
-              and revolving around <span class="accent-color-pink"> chord tones: </span>
-              <br />
-              <code> int[] chordTones = new int[4] { 0, 2, 4, 7 }; </code>
-              <br />
-              <code>
-                pattern.Note(key[chordTones[StaticRandom.Instance.Next(0, 4)]], MusicalTimeSpan.Eighth);
-              </code> -->
-              <pre class="prettyprint">class Voila {
-<span class="accent-color-blue">public: </span>
-  // Voila
-  static const string VOILA = "Voila";
-
-  // will not interfere with embedded <a href="#voila2">tags</a>.
-}</pre>
+<pre class="prettyprint">
+<span class="accent-color-blue">int[]</span> chordTones = new int[4] { 0, 2, 4, 7 };
+pattern.Note(key[chordTones[StaticRandom.Instance.Next(0, 4)]], <span class="accent-color-blue">MusicalTimeSpan</span>.Eighth);
+</pre>
 
             </ul>
             <hr class="line" />
@@ -113,6 +103,8 @@ export default{
 }
 .accent-color-pink{
     color: #eb1e82;
-
+}
+.accent-color-orange{
+    color: #f88d30;
 }
 </style>
