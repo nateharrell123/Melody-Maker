@@ -14,7 +14,16 @@
               Melodies.io assigns your melody to three "writers/composers":
             </p>
             <ul>
-              <li class="content-card-text"> List 1 </li>
+              <li class="content-card-text"> <span class="writer2-text"> Steve </span>
+                (ง^ᗜ^)ง
+              </li>
+              <li class="content-card-text"> <span class="writer3-text">Jerry </span>
+                (¬‿¬)
+              </li>
+              <li class="content-card-text"> <span class="writer1-text">Raphael </span>
+                ( ͡° ͜ʖ ͡°)
+              </li>
+
             </ul>
           </b-card>
         </b-col>
@@ -53,12 +62,22 @@ export default{
 }
 .content-card-text{
   font-family: "Montserrat";
-  font-size:22px;
+  font-size:32px;
   color: #9AAAAA;
+}
+.writer1-text{
+  color: #1aaaaa;
+  font-size:38px;
+}
+.writer2-text{
+  color: #eb1e82;
+  font-size:38px;
+}
+.writer3-text{
+  color: #f88d30;
+  font-size:38px;
 }
 .line{
   border-top: 3px solid white;
-  margin-left: 10%;
-  margin-right:10%;
 }
 </style>
