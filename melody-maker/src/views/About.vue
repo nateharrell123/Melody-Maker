@@ -18,27 +18,40 @@
             </h1>
             <hr class="line" />
             <p class="card-title">
-              <span class="accent-color-pink">Melodies</span>.<span class="accent-color-orange">io</span> assigns your melody to one of three "writers/composers".
-              <br/>
-              The writers create your MIDI file using the <a href="https://github.com/melanchall/drywetmidi">"DryWetMIDI"</a> library.
+              <span class="accent-color-pink">Melodies</span>.<span class="accent-color-orange">io</span> assigns your melody to one of three "writers/composers" :
+              <!-- <br/>
+              The writers create your MIDI file using the <a href="https://github.com/melanchall/drywetmidi">"DryWetMIDI"</a> library. -->
             </p>
+            <hr class="line" />
             <ul>
               <li class="content-card-text"> <span class="writer2-text"> Steve </span>
                 (ง^ᗜ^)ง
               </li>
             <ul class="content-card-text">
-              <span class="accent-color-pink">Steve</span> plays a 
+              <span class="accent-color-pink">Steve</span> listens to a 
               <span class="accent-color-red"> LOT </span>
-              of arcade video games. He enjoys the <span class="accent-color-pink"> fast paced, high energy </span>
-              stuff.
-              He favors eighth note rhythms, either pulling from a set collection:
-              <br />
+              of arcade video game music.
+              Here are some things he enjoys about the genre:
+              <ul>
+                <li> <span class="accent-color-pink"> Fast paced, high energy melodies </span> </li>
+                <li> <span class="accent-color-pink"> Arpeggio-like structure </span> </li>
+                <li> <span class="accent-color-pink"> Repetitive patterns </span> </li>
+
+              </ul>
+              He builds his melodies using <span class="accent-color-blue">eighth note rhythms</span>, either by 
+              randomly pulling from his collection of melodies:
               <body class="code-snippet">
               <code class="prettyprint"> 
+                <code>
+            <span class="accent-color-blue">int[] </span> phrase1 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 1, 0, 1, 2 };</span> <span class="accent-color-green">// 2, 1, 2, 3 </span>
+            <br/>
+            <span class="accent-color-green">// ...</span>
+            <br/>
+                </code>
                 <span class="accent-color-pink">pattern</span>.<span class="accent-color-orange">Note</span><span class="accent-color-grey">(key[phrase1[i]],</span> <span class="accent-color-blue">MusicalTimeSpan</span>.Eighth<span class="accent-color-grey">);</span> 
               </code>
               </body>
-              or by strategically placing
+              or by randomly placing
               <span class="accent-color-pink"> chord tones </span>
               throughout the melody:
               <br />
@@ -48,20 +61,7 @@
                 pattern.<span class="accent-color-orange">Note</span><span class="accent-color-grey">(key[chordTones[StaticRandom.Instance.Next(0, 4)]], </span><span class="accent-color-blue">MusicalTimeSpan</span>.Eighth);
               </code>
               </body>
-              Steve will produce a <span class="accent-color-pink">"high energy, arpeggio-like"</span> melody, with <span class="accent-color-pink">conjunct phrases</span> being sprinkled in:
-              <body class="code-snippet">
-                <code>
-            <span class="accent-color-blue">int[] </span> phrase1 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 1, 0, 1, 2 };</span> <span class="accent-color-green">// 2, 1, 2, 3 </span>
-            <br/>
-            <span class="accent-color-blue">int[] </span> phrase2 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 5, 4, 3, 4 };</span> <span class="accent-color-green">// 6, 5, 4, 5 </span>
-            <br/>
-            <span class="accent-color-blue">int[] </span> phrase3 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 5, 6, 5, 4 };</span> <span class="accent-color-green">// 6, 7, 6, 5 </span>
-            <br/>
-            <span class="accent-color-blue">int[] </span> phrase4 = <span class="accent-color-blue">new int[4]</span> <span class="accent-color-grey">{ 2, 1, 2, 4 };</span> <span class="accent-color-green">// 3, 2, 3, 5 </span>
-            <br/>
-            <span class="accent-color-green">// ...</span>
-                </code>
-              </body>
+              Steve will produce a <span class="accent-color-pink">"high energy, arpeggio-like"</span> melody, with <span class="accent-color-pink">conjunct phrases</span> being sprinkled in.
             </ul>
             <hr class="line" />
               <li class="content-card-text"> <span class="writer1-text">Raphael </span>
@@ -97,7 +97,9 @@
                 <span class="accent-color-green">// ...</span>
               </code>
               </body>
-                He constructs his melodies with either <span class="accent-color-blue"> quarter </span> or <span class="accent-color-blue"> eighth </span> notes.
+              <!-- He constructs his melodies with either <span class="accent-color-blue"> quarter </span> or <span class="accent-color-blue"> eighth </span> notes. -->
+              <span class="accent-color-blue"> Raphael </span>
+              will deliver you a <span class="accent-color-blue"> simple, yet catchy </span> melody.
               </ul>
             <hr class="line" />
 
@@ -106,8 +108,8 @@
               </li>
               <ul class="content-card-text">
                 <span class="accent-color-orange"> Jerry </span> 
-                is a bit more virtuosic compared to Steve & Raphael. Rather than determing rhythm 
-                based on position, <span class="accent-color-blue">Jerry will dictate some of his notes based on what has been placed before: </span>
+                is a bit more virtuosic compared to <span class="accent-color-pink">Steve</span> & <span class="accent-color-blue">Raphael</span>. Rather than <span class="accent-color-pink">following repetitive patterns</span>
+                or using <span class="accent-color-blue"> motifs </span>, <span class="accent-color-orange">Jerry will dictate some of his notes based on what has been placed before: </span>
                 <body class="code-snippet">
                   <code>
                     if <span class="accent-color-grey">(noteCounter == 0)</span>
@@ -122,6 +124,8 @@
                         <span style="padding-right:35px;"/> noteCounter++;
                     <br/>
                     }
+                    <br/>
+                    <span class="accent-color-green"> // ... </span>
                     </span>
                   </code>
                 </body>
