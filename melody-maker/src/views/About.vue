@@ -2,11 +2,17 @@
   <div>
     <b-row>
       <b-col cols="6">
+        <div>
     <HowItWorksTitle
     style="padding-bottom:30px;" />
+        </div>
       </b-col>
       <b-col cols="6">
-        <button> click me </button>
+        <div>
+          <b-card class="socials">
+            Hi
+          </b-card>
+        </div>
       </b-col>
     </b-row>
       <b-row>
@@ -156,6 +162,9 @@ export default{
 }
 </script>
 <style scoped>
+.socials{
+  /* margin:auto; */
+}
 .content-card{
   background: #32363b;
   margin: auto;
