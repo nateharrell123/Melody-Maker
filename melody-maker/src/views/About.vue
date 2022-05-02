@@ -1,5 +1,5 @@
 <template>
-  <div class="title">
+  <div>
     <b-row>
       <b-col cols="6">
     <HowItWorksTitle
@@ -58,10 +58,10 @@
               <body class="code-snippet">
               <code class="prettyprint">
                <span class="accent-color-blue">int[]</span> chordTones = <span class="accent-color-blue">new int[4]</span>  <span class="accent-color-grey">{ 0, 2, 4, 7 };</span> <span class="accent-color-green"> // 1, 3, 5, 8</span> <br/>
-                pattern.<span class="accent-color-orange">Note</span><span class="accent-color-grey">(key[chordTones[StaticRandom.Instance.Next(0, 4)]], </span><span class="accent-color-blue">MusicalTimeSpan</span>.Eighth);
+                pattern.<span class="accent-color-orange">Note</span><span class="accent-color-grey">(key[chordTones[StaticRandom.Instance.Next(0, 4)]], </span><span class="accent-color-blue">MusicalTimeSpan</span>.Eighth<span class="accent-color-grey">);</span>
               </code>
               </body>
-              Steve will produce a <span class="accent-color-pink">"high energy, arpeggio-like"</span> melody, with <span class="accent-color-pink">conjunct phrases</span> being sprinkled in.
+              <span class="accent-color-pink">Steve</span> will produce a <span class="accent-color-pink">"high energy, arpeggio-like"</span> melody, with <span class="accent-color-pink">conjunct phrases</span> being sprinkled in.
             </ul>
             <hr class="line" />
               <li class="content-card-text"> <span class="writer1-text">Raphael </span>
@@ -108,8 +108,8 @@
               </li>
               <ul class="content-card-text">
                 <span class="accent-color-orange"> Jerry </span> 
-                is a bit more virtuosic compared to <span class="accent-color-pink">Steve</span> & <span class="accent-color-blue">Raphael</span>. Rather than <span class="accent-color-pink">following repetitive patterns</span>
-                or using <span class="accent-color-blue"> motifs </span>, <span class="accent-color-orange">Jerry will dictate some of his notes based on what has been placed before: </span>
+                is a bit more virtuosic compared to <span class="accent-color-pink">Steve</span> & <span class="accent-color-blue">Raphael</span>. Rather than <span class="accent-color-pink">follow repetitive patterns</span>
+                or use <span class="accent-color-blue">motifs</span>, <span class="accent-color-orange">Jerry will dictate some of his notes based on what has been placed before: </span>
                 <body class="code-snippet">
                   <code>
                     if <span class="accent-color-grey">(noteCounter == 0)</span>
@@ -129,8 +129,8 @@
                     </span>
                   </code>
                 </body>
-                Jerry constructs his melodies with either <span class="accent-color-blue">dotted quarter notes</span>
-                ,<span class="accent-color-blue"> quarter notes</span>, <span class="accent-color-blue"> eighth notes </span>, or <span class="accent-color-blue"> triplets </span>.
+                <span class="accent-color-orange">Jerry</span> will deliver you a more 
+                <span class="accent-color-orange">virtuosic</span> melody.
               </ul>
             </ul>
           </b-card>
