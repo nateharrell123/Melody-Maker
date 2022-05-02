@@ -6,6 +6,11 @@
     <HowItWorksTitle
     style="padding-bottom:30px;" />
         </div>
+        <div class="submit-feedback">
+    <button @click="toHowItWorks" class="how-it-works">
+      Submit Feedback:
+    </button>
+        </div>
       </b-col>
       <b-col cols="6">
         <div>
@@ -140,6 +145,18 @@
               </ul>
             </ul>
           </b-card>
+          <b-col cols="5" class="center-col">
+            <div style="padding-top:40px" />
+          <div class="submit-feedback">
+            Submit feedback:
+            <b-form-textarea class="feedback-form" id="enter-key-color"
+            placeholder="Enter your feedback: (200 max)"
+            
+            >
+
+          </b-form-textarea>
+          </div>
+          </b-col>
         </b-col>
         <b-col cols="1">
         </b-col>
@@ -165,6 +182,48 @@ export default{
 .socials{
   /* margin:auto; */
 }
+#enter-key-color{
+  background-color:transparent;
+  color:#9AAAAA;
+}
+.center-col{
+  margin:auto;
+}
+.submit-feedback{
+  font-size:32px;
+  letter-spacing: 2px;
+  color: #9AAAAA;
+  text-align: center;
+}
+.how-it-works{
+  font-size: 32px;
+  padding-bottom:30px;
+  color: #9AAAAA;
+  background:none;
+  outline:none;
+  border:none;
+  float:left;
+}
+
+.how-it-works::after{
+  content:'';
+  height:2px;
+  width:0%;
+  background-color: #1AAAAA;
+  display:block;
+  transition: .2s ease-in-out;
+}
+.how-it-works:hover::after{
+  content:'';
+  height:2px;
+  width:100%;
+  background-color: #1AAAAA;
+  display:block;
+}
+.how-it-works:hover{
+  color:#9DDDDD;
+}
+
 .content-card{
   background: #32363b;
   margin: auto;
