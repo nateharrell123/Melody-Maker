@@ -346,7 +346,7 @@ export default {
         { value: "Minor", text: "Min" },
       ],
       measuresOptions: [1, 2, 4, 8, 16],
-      writerOptions: ["Steve (ง^ᗜ^)ง", "Raphael ( ͡° ͜ʖ ͡°)", "Jerry  (¬‿¬)"],
+      writerOptions: ["Steve (ง^ᗜ^)ง", "Raphael ( ͡° ͜ʖ ͡°)", "Jerry (¬‿¬)"],
       chordProgressionOptions: ["Yes", "No"],
       chordProgressions: []
     };
@@ -359,13 +359,15 @@ export default {
     ...mapMutations(["setAssignment", "setAssignedWriter", "setCreatedMelody",
     "setCreatingMelody"]),
     createMelod(){
+
+      var s = this.writers.split(' ')
       
       var assignment = {
         key: this.key,
         keyMode: this.keyModeSelected,
         measures: this.measures,
         bpm: this.bpm,
-        writer: this.writers,
+        writer: s[0],
       }
 
       assignment.bpm = Number(assignment.bpm)
