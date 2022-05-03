@@ -5,13 +5,18 @@
         <div>
     <HowItWorksTitle
     style="padding-bottom:30px;" />
+        </div>
+      <Footer />
+      <div style="padding-bottom:40px;"/>
+
+      </b-col>
+        <b-col cols="6" class="col-fix">
         <div class="submit-feedback">
         <button @click="toSubmitFeedback" class="how-it-works">
           Submit Feedback:
         </button>
         </div>
-        </div>
-      </b-col>
+        </b-col>
       <b-col cols="6">
       </b-col>
     </b-row>
@@ -141,6 +146,12 @@
             </ul>
           </b-card>
           <FeedbackForm />
+          <!-- <b-row>
+            <b-col cols="3"/>
+          <b-col cols="6">
+          </b-col>
+          <b-col cols="3"/>
+          </b-row> -->
         </b-col>
         <b-col cols="1">
         </b-col>
@@ -151,11 +162,13 @@
 <script>
 import HowItWorksTitle from "../components/HowItWorksTitle.vue"
 import FeedbackForm from "../components/FeedbackForm.vue"
+import Footer from "../components/Footer.vue"
 export default{
   name: "About",
   components: {
     HowItWorksTitle,
-    FeedbackForm
+    FeedbackForm,
+    Footer
   },
   data(){
     return{
@@ -177,7 +190,10 @@ export default{
   background-color:transparent;
   color:#9AAAAA;
 }
-
+.col-fix{
+  margin:auto;
+  text-align: right;
+}
 .center-col{
   margin:auto;
 }
@@ -185,6 +201,7 @@ export default{
   font-size:32px;
   letter-spacing: 2px;
   color: #9AAAAA;
+  padding-right:35px;
 }
 .how-it-works{
   font-size: 32px;
@@ -193,7 +210,6 @@ export default{
   background:none;
   outline:none;
   border:none;
-  float:left;
 }
 
 .how-it-works::after{
