@@ -5,19 +5,14 @@
         <div>
     <HowItWorksTitle
     style="padding-bottom:30px;" />
-        </div>
         <div class="submit-feedback">
-    <button @click="toSubmitFeedback" class="how-it-works">
-      Submit Feedback:
-    </button>
+        <button @click="toSubmitFeedback" class="how-it-works">
+          Submit Feedback:
+        </button>
+        </div>
         </div>
       </b-col>
       <b-col cols="6">
-        <div>
-          <b-card class="socials">
-            Hi
-          </b-card>
-        </div>
       </b-col>
     </b-row>
       <b-row>
@@ -190,7 +185,6 @@ export default{
   font-size:32px;
   letter-spacing: 2px;
   color: #9AAAAA;
-  text-align: center;
 }
 .how-it-works{
   font-size: 32px;

@@ -1,9 +1,7 @@
 <template>
-  <header>
     <div class="title">
       <button @click="toHome()" id="title-text">melodies.io </button>
     </div>
-  </header>
 </template>
 
 <script>
