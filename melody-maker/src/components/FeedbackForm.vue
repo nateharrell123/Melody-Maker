@@ -17,7 +17,7 @@
             placeholder="Enter your feedback: (200 max)"
         >
         </b-form-textarea>
-        <div v-else>
+        <div v-else class="feedback-submitted-message">
             Feedback submitted, thank you!
         </div>
         <div class="error" 
@@ -27,11 +27,11 @@
         </div>
         <div style="padding-top:15px;" />
         <b-button 
-        v-if="$v.feedback.required"
+        v-if="$v.feedback.required && !feedbackSubmitted"
         class="button" @click="submitFeedback">Submit Feedback</b-button>
         </div>
-
     </div>
+    <div style="padding-bottom:100px;" />
   </b-col>
 </template>
 
@@ -63,6 +63,12 @@ export default {
 #enter-feedback{
   background-color:transparent;
   color:#9AAAAA;
+}
+.feedback-submitted-message{
+    text-align: center;
+    font-size:18px;
+    color: #9AAAAA;
+    letter-spacing: 0;
 }
 #error-message{
     text-align: left;
