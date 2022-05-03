@@ -7,7 +7,7 @@
     style="padding-bottom:30px;" />
         </div>
         <div class="submit-feedback">
-    <button @click="toHowItWorks" class="how-it-works">
+    <button @click="toSubmitFeedback" class="how-it-works">
       Submit Feedback:
     </button>
         </div>
@@ -145,18 +145,7 @@
               </ul>
             </ul>
           </b-card>
-          <b-col cols="5" class="center-col">
-            <div style="padding-top:40px" />
-          <div class="submit-feedback">
-            Submit feedback:
-            <b-form-textarea class="feedback-form" id="enter-key-color"
-            placeholder="Enter your feedback: (200 max)"
-            
-            >
-
-          </b-form-textarea>
-          </div>
-          </b-col>
+          <FeedbackForm />
         </b-col>
         <b-col cols="1">
         </b-col>
@@ -166,14 +155,21 @@
 
 <script>
 import HowItWorksTitle from "../components/HowItWorksTitle.vue"
+import FeedbackForm from "../components/FeedbackForm.vue"
 export default{
   name: "About",
   components: {
-    HowItWorksTitle
+    HowItWorksTitle,
+    FeedbackForm
   },
   data(){
     return{
 
+    }
+  },
+  methods: {
+    toSubmitFeedback(){
+      document.getElementById("feedback").scrollIntoView();
     }
   }
 }
@@ -186,6 +182,7 @@ export default{
   background-color:transparent;
   color:#9AAAAA;
 }
+
 .center-col{
   margin:auto;
 }
