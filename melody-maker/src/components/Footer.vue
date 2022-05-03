@@ -39,7 +39,7 @@ export default {
     padding-bottom:50px;
     width:500px;
     height:75px;
-    margin-left:10px;
+    margin:auto;
 }
 .follow-me{
     margin:auto;

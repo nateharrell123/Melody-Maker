@@ -6,7 +6,6 @@
     <HowItWorksTitle
     style="padding-bottom:30px;" />
         </div>
-      <Footer />
       <div style="padding-bottom:40px;"/>
 
       </b-col>
@@ -146,12 +145,14 @@
             </ul>
           </b-card>
           <FeedbackForm />
-          <!-- <b-row>
+          <b-row>
             <b-col cols="3"/>
           <b-col cols="6">
+      <Footer />
+
           </b-col>
           <b-col cols="3"/>
-          </b-row> -->
+          </b-row>
         </b-col>
         <b-col cols="1">
         </b-col>
