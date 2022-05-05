@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios"
+//import { reject, resolve } from "core-js/fn/promise";
 
 Vue.use(Vuex);
 
@@ -20,7 +21,8 @@ export default new Vuex.Store({
     createdMelody: false,
     melodyError: false,
     hasVisited: false,
-    assignedWriter: "hi",
+    assignedWriter: "",
+    feedback: {},
   },
   getters: {
     getCreatingMelody: (state) => state.creatingMelody,
@@ -48,6 +50,9 @@ export default new Vuex.Store({
     },
     setHasVisited: (state, data) => {
       state.hasVisited = data;
+    },
+    setFeedback: (state, data) => {
+      state.feedback = data
     }
   },
   actions: {
@@ -88,5 +93,20 @@ export default new Vuex.Store({
             // error handling goes here
           })
       }),
+      submitFeedback: ({ state }) => 
+        new Promise((resolve, reject) => {
+          axios.post(`${API_URL}/Feedback/SendFeedback`, state.feedback)
+            .then((response) => {
+              if (response.data) {
+                resolve(response.status)
+              }
+              else {
+                reject()
+              }
+            })
+            .catch(() => {
+              reject()
+            })
+        })
     }
 });

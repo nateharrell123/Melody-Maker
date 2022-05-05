@@ -1,17 +1,18 @@
 <template>
   <b-col cols="5" class="center-col">
     <div style="padding-top: 40px" />
-    <div class="form-group" :class="{ 'form-group--error': $v.feedback.$error}">
+    <div class="form-group" :class="{ 'form-group--error': $v.criticismFormInput.$error}">
         <div class="submit-feedback" id="feedback">
         Submit feedback:
         <b-form-input id="enter-feedback" placeholder="Name (optional):"
+        v-model="feedback.name"
         v-if="!feedbackSubmitted"
             maxlength="20">
         </b-form-input>
         <div style="padding-bottom: 20px" />
         <b-form-textarea
         v-if="!feedbackSubmitted"
-            v-model="feedback"
+            v-model="criticismFormInput"
             class="feedback-form"
             id="enter-feedback"
             placeholder="Enter your feedback: (200 max)"
@@ -22,13 +23,13 @@
         </div>
         <div class="error" 
         id="error-message"
-        v-if="!$v.feedback.required">
+        v-if="!$v.criticismFormInput.required">
         Field can't be empty.
         </div>
         <div style="padding-top:15px;" />
         <b-button 
-        v-if="$v.feedback.required && !feedbackSubmitted"
-        class="button" @click="submitFeedback">Submit Feedback</b-button>
+        v-if="$v.criticismFormInput.required && !feedbackSubmitted"
+        class="button" @click="submitFeedbac">Submit Feedback</b-button>
         </div>
     </div>
     <div style="padding-bottom:100px;" />
@@ -37,22 +38,29 @@
 
 <script>
 import { required } from "vuelidate/lib/validators";
+import { mapActions, mapMutations } from "vuex";
+
 export default {
     name: "FeedbackForm",
     data(){
         return{
-            feedback: "",
+            feedback: {name: "", criticism: ""},
+            criticismFormInput: "",
             feedbackSubmitted: false
         }
     },
     methods: {
-        submitFeedback(){
-            console.log(this.feedback)
+        ...mapMutations(["setFeedback"]),
+        ...mapActions(["submitFeedback"]),
+        submitFeedbac(){
+            this.feedback.criticism = this.criticismFormInput; // for vuelidate bug
+            this.setFeedback(this.feedback)
+            this.submitFeedback()
             this.feedbackSubmitted = true;
         }
     },
     validations: {
-        feedback: {
+        criticismFormInput: {
             required
         }
     }

@@ -375,7 +375,6 @@ export default {
 
       this.setAssignment(assignment)
       this.setAssignedWriter(this.writers)
-      console.log(`assigned writer is ${this.getAssignedWriter}`)
       this.createMelody()
     },
     done(){
