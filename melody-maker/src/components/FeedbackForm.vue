@@ -44,9 +44,9 @@ export default {
     name: "FeedbackForm",
     data(){
         return{
-            feedback: {name: "", criticism: ""},
+            feedback: {name: "", criticism: "", timeSubmitted: new Date().toISOString()},
             criticismFormInput: "",
-            feedbackSubmitted: false
+            feedbackSubmitted: false,
         }
     },
     methods: {
