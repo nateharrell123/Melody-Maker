@@ -25,6 +25,7 @@
             </b-col>
         </b-row>
     </div>
+    <div style="padding-bottom:50px;"/>
     </div>
 </template>
 

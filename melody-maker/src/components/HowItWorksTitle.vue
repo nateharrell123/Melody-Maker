@@ -1,6 +1,6 @@
 <template>
     <div class="title">
-      <button @click="toHome()" id="title-text">melodies.io </button>
+      <button @click="toHome()" id="title-text">melodies.to </button>
     </div>
 </template>
 

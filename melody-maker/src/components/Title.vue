@@ -4,7 +4,7 @@
       <span id="text">Let's make some music.</span>
     </div>
     <div class="title-2" id="fade-in">
-      <span id="text-2">melodies.io </span>
+      <span id="text-2">melodies.to </span>
     <div class="right"> 
     <button @click="toHowItWorks" class="how-it-works">
       how it works

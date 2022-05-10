@@ -212,6 +212,16 @@ export default{
   outline:none;
   border:none;
 }
+@media only screen and (max-width:800px)
+{
+  .how-it-works {
+    /* font-size:35px !important;
+    text-align: center !important;
+    padding: 0px !important; */
+    padding-top:100px;
+    padding-right:500px;
+  }
+}
 
 .how-it-works::after{
   content:'';
