@@ -1,21 +1,20 @@
 <template>
   <div>
     <b-row>
-      <b-col cols="6">
-        <div>
-    <HowItWorksTitle
-    style="padding-bottom:30px;" />
+        <div style="text-align:center;">
+        <HowItWorksTitle />
+        <button @click="toSubmitFeedback" class="how-it-works">
+            Submit Feedback:
+        </button>
         </div>
       <div style="padding-bottom:40px;"/>
-
-      </b-col>
-        <b-col cols="6" class="col-fix">
+        <!-- <b-col cols="6" class="col-fix">
         <div class="submit-feedback">
         <button @click="toSubmitFeedback" class="how-it-works">
           Submit Feedback:
         </button>
         </div>
-        </b-col>
+        </b-col> -->
       <b-col cols="6">
       </b-col>
     </b-row>
@@ -145,14 +144,14 @@
             </ul>
           </b-card>
           <FeedbackForm />
-      <Footer />
-          <b-row>
+          <Footer />
+          <!-- <b-row>
             <b-col cols="3"/>
           <b-col cols="6">
 
           </b-col>
           <b-col cols="3"/>
-          </b-row>
+          </b-row> -->
         </b-col>
         <b-col cols="1">
         </b-col>
@@ -164,6 +163,7 @@
 import HowItWorksTitle from "../components/HowItWorksTitle.vue"
 import FeedbackForm from "../components/FeedbackForm.vue"
 import Footer from "../components/Footer.vue"
+
 export default{
   name: "About",
   components: {
@@ -211,16 +211,6 @@ export default{
   background:none;
   outline:none;
   border:none;
-}
-@media only screen and (max-width:800px)
-{
-  .how-it-works {
-    /* font-size:35px !important;
-    text-align: center !important;
-    padding: 0px !important; */
-    padding-top:100px;
-    padding-right:500px;
-  }
 }
 
 .how-it-works::after{
