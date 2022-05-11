@@ -154,7 +154,7 @@
                 id="error-message"
               >
                 BPM
-                <span class="accent-color"> can't be less than 40.</span>
+                <span class="accent-color"> can't be less than 30.</span>
               </div>
                 </b-col>
 
