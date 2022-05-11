@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios"
-//import { reject, resolve } from "core-js/fn/promise";
 
 Vue.use(Vuex);
 
@@ -80,17 +79,11 @@ export default new Vuex.Store({
               state.melodyError = true
             }
           })
-          // .then(() => {
-          //   state.creatingMelody = false
-          //   state.createdMelody = true
-          //   resolve()
-          // })
           .catch(() => {
             reject()
             state.creatingMelody = false
             state.createdMelody = false
             state.melodyError = true
-            // error handling goes here
           })
       }),
       submitFeedback: ({ state }) => 
