@@ -1,0 +1,45 @@
+{
+    "data": {
+        "timeDivision": {},
+        "chunks": [
+            {
+                "chunkId": "MTrk"
+            },
+            {
+                "chunkId": "MTrk"
+            }
+        ],
+        "originalFormat": 1
+    },
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false
+        },
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        },
+        "method": "post",
+        "url": "https://localhost:5001/Melody/CreateMelody",
+        "data": "{\"key\":\"F\",\"keyMode\":\"Major\",\"measures\":4,\"bpm\":44,\"writer\":\"Raphael\"}"
+    },
+    "request": {}
+}
