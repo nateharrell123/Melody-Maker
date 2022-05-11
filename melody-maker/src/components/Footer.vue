@@ -2,8 +2,8 @@
     <div class="footer-container">
     <div class="follow-me">
         <span class="title">Let's connect! ツ</span>
-        <b-row>
-            <b-col cols="3">
+        <b-row style="text-align:center;">
+            <b-col cols="3" align-self="center">
                     <svg @click="toLinkedIn" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                         class="social-icon"
                         width="40" height="40"
@@ -14,8 +14,8 @@
                         </path>
                     </svg>
             </b-col>
-            <b-col cols="3">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            <b-col cols="3" align-self="center">
+                <svg @click="toGit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                     class="social-icon"
                     width="40" height="40"
                     viewBox="0 0 24 24">    
@@ -23,8 +23,8 @@
                 </path>
                 </svg>
             </b-col>
-            <b-col cols="3">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            <b-col cols="3" align-self="center">
+                <svg @click="toInsta" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                     class="social-icon"
                     width="40" height="40"
                     viewBox="0 0 24 24"> 
@@ -32,8 +32,8 @@
                     </path>
                 </svg>
             </b-col>
-            <b-col cols="3">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            <b-col cols="3" align-self="center">
+            <svg @click="toTube" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             class="social-icon"
                 width="40" height="40"
                 viewBox="0 0 50 50">
@@ -54,7 +54,15 @@ export default {
         toLinkedIn(){
             window.open('https://www.linkedin.com/in/nate-harrell/')
         },
-
+        toGit(){
+            window.open('https://github.com/nateharrell123')
+        },
+        toInsta(){
+            window.open('https://www.instagram.com/nateharrell/')
+        },
+        toTube(){
+            window.open('https://www.youtube.com/c/NateHarrell')
+        }
     }
 }
 </script>
