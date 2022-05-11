@@ -28,7 +28,7 @@
             </h1>
             <hr class="line" />
             <p class="card-title">
-              <span class="accent-color-pink">Melodies</span>.<span class="accent-color-orange">io</span> assigns your melody to one of three "writers/composers" :
+              <span class="accent-color-pink">Melodies</span>.<span class="accent-color-orange">to</span> assigns your melody to one of three "writers/composers" :
               <!-- <br/>
               The writers create your MIDI file using the <a href="https://github.com/melanchall/drywetmidi">"DryWetMIDI"</a> library. -->
             </p>
