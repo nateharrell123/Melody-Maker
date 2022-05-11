@@ -297,7 +297,6 @@
 
 <script>
 import { required, numeric, maxValue, minValue } from "vuelidate/lib/validators";
-// import axios from "axios"
 import { bus } from "../main";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 import MusicPlayer from "./MusicPlayer.vue"
