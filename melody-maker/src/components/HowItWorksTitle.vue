@@ -42,6 +42,6 @@ export default {
   -webkit-text-fill-color: transparent;
 }
 #title-text:hover{
-  background-image: linear-gradient(45deg, #ba0f62, #ff7700);
+  background-image: linear-gradient(45deg, #d9428b, #ffb574);
 }
 </style>

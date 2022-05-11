@@ -145,10 +145,10 @@
             </ul>
           </b-card>
           <FeedbackForm />
+      <Footer />
           <b-row>
             <b-col cols="3"/>
           <b-col cols="6">
-      <Footer />
 
           </b-col>
           <b-col cols="3"/>
