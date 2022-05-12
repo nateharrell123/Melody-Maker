@@ -15,6 +15,7 @@
             v-model="criticismFormInput"
             class="feedback-form"
             id="enter-feedback"
+            :formatter="formatFeedback"
             placeholder="Enter your feedback: (200 max)"
         >
         </b-form-textarea>
@@ -57,6 +58,9 @@ export default {
             this.setFeedback(this.feedback)
             this.submitFeedback()
             this.feedbackSubmitted = true;
+        },
+        formatFeedback(e){
+            return String(e).substring(0,199);
         }
     },
     validations: {
