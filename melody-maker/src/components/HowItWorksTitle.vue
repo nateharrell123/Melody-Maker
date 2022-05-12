@@ -31,8 +31,7 @@ export default {
 #title-text{
   background-image: linear-gradient(45deg, #eb1e82, #f88d30);
   border:none;
-  font-weight: 550;
-
+  font-weight:700;
   background-size: 100%;
   letter-spacing: 5px;
   background-repeat: repeat;
