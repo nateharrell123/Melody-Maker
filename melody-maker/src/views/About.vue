@@ -40,7 +40,7 @@
             </p>
             <hr class="line" />
             <ul>
-              <li class="content-card-text"> <span class="writer2-text"> Steve </span>
+              <li class="content-card-text-header"> <span class="writer2-text"> Steve </span>
                 (ง^ᗜ^)ง
               </li>
             <ul class="content-card-text">
@@ -80,7 +80,7 @@
               <span class="accent-color-pink">Steve</span> will produce a <span class="accent-color-pink">"high energy, arpeggio-like"</span> melody, with <span class="accent-color-pink">conjunct phrases</span> being sprinkled in.
             </ul>
             <hr class="line" />
-              <li class="content-card-text"> <span class="writer1-text">Raphael </span>
+              <li class="content-card-text-header"> <span class="writer1-text">Raphael </span>
                 ( ͡° ͜ʖ ͡°)
               </li>
               <ul class="content-card-text">
@@ -119,7 +119,7 @@
               </ul>
             <hr class="line" />
 
-              <li class="content-card-text"> <span class="writer3-text">Jerry </span>
+              <li class="content-card-text-header"> <span class="writer3-text">Jerry </span>
                 (¬‿¬)
               </li>
               <ul class="content-card-text">
@@ -147,6 +147,12 @@
                 </body>
                 <span class="accent-color-orange">Jerry</span> will deliver you a more 
                 <span class="accent-color-orange">virtuosic</span> melody.
+                <br/>
+              The writers create your MIDI file using the     
+              <button @click="toDryWetMIDI" class="how-it-works">
+              <span class="accent-color-pink">DryWetMIDI</span>
+              </button> 
+                library.
               </ul>
             </ul>
           </b-card>
@@ -187,6 +193,9 @@ export default{
     },
     toHome(){
       this.$router.push("/")
+    },
+    toDryWetMIDI(){
+      window.open("https://github.com/melanchall/drywetmidi")
     }
   }
 }
@@ -252,7 +261,7 @@ export default{
 }
 @media only screen and (max-width:1024px)
 {
-    .title{
+  .title{
     font-size:55px !important;
     text-align: center !important;
     padding: 0px !important;
@@ -306,6 +315,12 @@ export default{
   text-align: center;
 }
 .content-card-text{
+  font-family: "Montserrat";
+  font-size:28px;
+  font-weight: 380 !important;
+  color: #9AAAAA;
+}
+.content-card-text-header{
   font-family: "Montserrat";
   font-size:28px;
   color: #9AAAAA;
