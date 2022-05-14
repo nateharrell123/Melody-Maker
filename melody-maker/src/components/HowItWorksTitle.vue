@@ -27,10 +27,15 @@ export default {
   margin-top: 30px;
   font-weight: 550;
   font-family: "Montserrat";
-  text-align: center;
   letter-spacing:5px;
   font-size: 75px;
   text-transform: lowercase;
+}
+@media only screen and (max-width:1000px)
+{
+  .title {
+    font-size:55px;
+  }
 }
 #title-text{
   background-image: linear-gradient(45deg, #eb1e82, #f88d30);

@@ -1,21 +1,27 @@
 <template>
   <div>
     <b-row>
-      <b-col cols="6">
-        <div>
-    <HowItWorksTitle
-    style="padding-bottom:30px;" />
-        </div>
-      <div style="padding-bottom:40px;"/>
-
-      </b-col>
-        <b-col cols="6" class="col-fix">
+      <b-col cols="12">
+      <!-- <div class="title-outer">
+    <HowItWorksTitle />
         <div class="submit-feedback">
         <button @click="toSubmitFeedback" class="how-it-works">
           Submit Feedback:
         </button>
         </div>
-        </b-col>
+      </div> -->
+          <div class="title">
+      <span id="title-text" @click="toHome">melodies.to </span>
+    <div class="right"> 
+    <button @click="toSubmitFeedback" class="how-it-works">
+      Submit Feedback:
+    </button>
+    </div>
+    </div>
+
+      </b-col>
+        <!-- <b-col cols="6" class="col-fix"> -->
+        <!-- </b-col> -->
       <b-col cols="6">
       </b-col>
     </b-row>
@@ -161,13 +167,13 @@
 </template>
 
 <script>
-import HowItWorksTitle from "../components/HowItWorksTitle.vue"
+//import HowItWorksTitle from "../components/HowItWorksTitle.vue"
 import FeedbackForm from "../components/FeedbackForm.vue"
 import Footer from "../components/Footer.vue"
 export default{
   name: "About",
   components: {
-    HowItWorksTitle,
+    //HowItWorksTitle,
     FeedbackForm,
     Footer
   },
@@ -178,6 +184,9 @@ export default{
   methods: {
     toSubmitFeedback(){
       document.getElementById("feedback").scrollIntoView();
+    },
+    toHome(){
+      this.$router.push("/")
     }
   }
 }
@@ -185,6 +194,36 @@ export default{
 <style scoped>
 .socials{
   /* margin:auto; */
+}
+.right{
+  float:right;
+  padding-right:15px;
+}
+.title{
+  margin-top: 30px;
+  font-weight: 550;
+  font-family: "Montserrat";
+  letter-spacing:5px;
+  font-size: 75px;
+  text-transform: lowercase;
+}
+#title-text{
+  background-image: linear-gradient(45deg, #eb1e82, #f88d30);
+  cursor:pointer;
+
+  padding-left:55px;
+  background-size: 100%;
+  background-repeat: repeat;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#title-text:hover{
+  background-image: linear-gradient(45deg, #d9428b, #ffb574);
+}
+.title-outer{
+  display:inline-block;
 }
 #enter-key-color{
   background-color:transparent;
@@ -211,14 +250,24 @@ export default{
   outline:none;
   border:none;
 }
-@media only screen and (max-width:800px)
+@media only screen and (max-width:1024px)
 {
-  .how-it-works {
-    /* font-size:35px !important;
+    .title{
+    font-size:55px !important;
     text-align: center !important;
-    padding: 0px !important; */
-    padding-top:100px;
-    padding-right:500px;
+    padding: 0px !important;
+  }
+  .how-it-works {
+    font-size:35px !important;
+    text-align: center !important;
+    padding: 0px !important;
+  }
+  .right{
+    font-size:35px !important;
+    text-align: center !important;
+    padding: 0px !important;
+    float:none;
+    padding-bottom:50px !important;
   }
 }
 .how-it-works::after{
