@@ -78,6 +78,7 @@ export default {
 }
 .social-icon{
     fill:#1AAAAA;
+    cursor:pointer;
     transition: background 1s;
 }
 .social-icon:hover{
