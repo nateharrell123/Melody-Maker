@@ -196,6 +196,5 @@ export default {
 
 header {
   animation: 1s ease-out 0s 1 slideInTop;
-
 }
 </style>

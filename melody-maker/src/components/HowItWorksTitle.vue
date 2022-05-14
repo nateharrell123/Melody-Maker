@@ -1,6 +1,6 @@
 <template>
     <div class="title">
-      <button @click="toHome()" id="title-text">melodies.to </button>
+      <span @click="toHome()" id="title-text">melodies.to </span>
     </div>
 </template>
 
@@ -24,16 +24,18 @@ export default {
 
 <style scoped>
 .title{
+  margin-top: 30px;
+  font-weight: 550;
   font-family: "Montserrat";
+  text-align: center;
+  letter-spacing:5px;
   font-size: 75px;
-  color:white;
+  text-transform: lowercase;
 }
 #title-text{
   background-image: linear-gradient(45deg, #eb1e82, #f88d30);
-  border:none;
-  font-weight:700;
+
   background-size: 100%;
-  letter-spacing: 5px;
   background-repeat: repeat;
 
   -webkit-background-clip: text;
