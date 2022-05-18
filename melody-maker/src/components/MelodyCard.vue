@@ -370,7 +370,6 @@ export default {
       }
 
       assignment.bpm = Number(assignment.bpm)
-      console.log(assignment)
 
       this.setAssignment(assignment)
       this.setAssignedWriter(this.writers)

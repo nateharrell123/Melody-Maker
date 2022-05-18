@@ -58,13 +58,10 @@ export default new Vuex.Store({
     createMelody: ({state, commit}) => 
     new Promise((resolve, reject) => {
       state.creatingMelody = true
-      console.log(API_URL)
       axios
       .post(`${API_URL}/Melody/CreateMelody`, state.assignment)
           .then((response) => {
             if (response.data) {
-              console.log(`in store, writer is ${response.data.writer}`)
-
               resolve(response.status)
               commit('setAssignmentResponse', response.data)
 
