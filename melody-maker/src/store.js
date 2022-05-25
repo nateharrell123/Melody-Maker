@@ -5,7 +5,6 @@ import axios from "axios"
 Vue.use(Vuex);
 
 const API_URL = process.env.VUE_APP_BASE_API_URL;
-
 export default new Vuex.Store({
   state: {
     assignment: {
