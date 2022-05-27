@@ -62,7 +62,8 @@ export default {
         },
         setInstrument(){
            var piano = "https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus";
-           var guitar = "https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus";
+           var guitar = "https://storage.googleapis.com/magentadata/js/soundfonts/salamander";
+
            console.log(this.instrumentSelected)
            if (this.instrumentSelected == "Synth")
            {
