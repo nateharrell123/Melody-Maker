@@ -50,6 +50,7 @@
                   >
                     <template #first>
                       <b-form-select-option
+                      aria-placeholder="hello"
                         id="key-modes-select"
                         :value="null"
                         disabled
