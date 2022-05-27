@@ -10,6 +10,7 @@
                 id="media-player"
                 class="music-player"
                 :src="setMelody"
+                :sound-font="setInstrument"
                 visualizer="#myVisualizer">
                 </midi-player>
             </b-col>
@@ -19,7 +20,7 @@
                 class="form__input"
                 id="key-modes-select"
                 v-model="instrumentSelected"
-                :options="keyModes"
+                :options="instrumentOptions"
                 >
                 <template #first>
                     <b-form-select-option
@@ -45,7 +46,7 @@ export default {
     name: "MusicPlayer",
     data(){
         return {
-            instrumentOptions: ["Guitar", "Piano", "Synth"],
+            instrumentOptions: ["Synth", "Piano", "Guitar"],
             instrumentSelected: null,
         }
     },
@@ -58,6 +59,24 @@ export default {
             var str = this.getAssignmentResponse;
             const linkSource = `data:application/midi;base64,${str}`;
             return linkSource
+        },
+        setInstrument(){
+           var piano = "https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus";
+           var guitar = "https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus";
+           console.log(this.instrumentSelected)
+           if (this.instrumentSelected == "Synth")
+           {
+               return null; // default sound
+           }
+           else if (this.instrumentSelected == "Piano")
+           {
+               return piano;
+           }
+           else if (this.instrumentSelected == "Guitar")
+           {
+               return guitar;
+           }
+           else return null;
         }
     },
 }
