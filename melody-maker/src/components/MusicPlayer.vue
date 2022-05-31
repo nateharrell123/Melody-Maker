@@ -10,11 +10,13 @@
                 id="media-player"
                 class="music-player"
                 :src="setMelody"
-                :sound-font="setInstrument"
+                sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+
                 visualizer="#myVisualizer">
                 </midi-player>
             </b-col>
-        <!-- <div class="inner-div"> -->
+        <!-- <div class="inner-div">
+ -->
             <b-col style="padding-top:10px; padding-left:50px;" cols="3">
                 <b-form-select
                 class="form__input"
@@ -60,26 +62,18 @@ export default {
             const linkSource = `data:application/midi;base64,${str}`;
             return linkSource
         },
-        setInstrument(){
-           var piano = "https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus";
-           var guitar = "https://storage.googleapis.com/magentadata/js/soundfonts/salamander";
-
-           console.log(this.instrumentSelected)
-           if (this.instrumentSelected == "Synth")
-           {
-               return null; // default sound
-           }
-           else if (this.instrumentSelected == "Piano")
-           {
-               return piano;
-           }
-           else if (this.instrumentSelected == "Guitar")
-           {
-               return guitar;
-           }
-           else return null;
-        }
     },
+    watch: {
+        instrumentSelected: {
+            handler(newVal) {
+                var inst = document.getElementById("media-player");
+                console.log("value changed", newVal)
+                if (newVal === "Guitar") {
+                    console.log(inst)
+                }
+            }
+        }
+    }
 }
 </script>
 
