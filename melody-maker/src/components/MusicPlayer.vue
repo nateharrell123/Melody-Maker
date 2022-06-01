@@ -18,7 +18,8 @@
         <!-- <div class="inner-div">
  -->
  <div class="hotfix">
-            <b-col style="padding-top:10px; padding-left:50px;" cols="3">
+     <div class="hotfix-2" style="padding-left:50px;"/>
+            <b-col style="padding-top:10px;" cols="3">
                 <b-form-select
                 class="form__input"
                 id="key-modes-select"
@@ -101,6 +102,7 @@ export default {
 @media only screen and (max-width:1024px) {
     .hotfix{
         display:block;
+        float:left;
     }
 }
 
