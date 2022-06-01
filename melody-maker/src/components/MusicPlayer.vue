@@ -56,7 +56,7 @@ export default {
             instrumentOptions: ["Dist. Guitar", "Piano", 
             "Ac. Guitar", "Harpsichord", "Orchestra Hit",
             "Synth", "Strings", "Trumpet", "Sax"
-            , "Flute"],
+            , "Pan Flute"],
             instrumentSelected: null,
         }
     },
@@ -120,7 +120,7 @@ export default {
                         element.program = 65;
                     });
                 }
-                if (newVal === "Flute") {
+                if (newVal === "Pan Flute") {
                     inst.forEach(element => {
                         element.program = 75;
                     });
