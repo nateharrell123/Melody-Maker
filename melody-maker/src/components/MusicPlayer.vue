@@ -4,22 +4,26 @@
             <span class="blue"> {{getAssignedWriter}} </span>
              delivered you: 
             </span>
+            <div>
         <b-row>
             <b-col cols="3">
                 <midi-player
                 id="media-player"
                 class="music-player"
                 :src="setMelody"
+                sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
                 visualizer="#myVisualizer">
                 </midi-player>
             </b-col>
         <!-- <div class="inner-div">
  -->
+ <div class="hotfix">
             <b-col style="padding-top:10px; padding-left:50px;" cols="3">
                 <b-form-select
                 class="form__input"
                 id="key-modes-select"
                 v-model="instrumentSelected"
+
                 :options="instrumentOptions"
                 >
                 <template #first>
@@ -32,7 +36,9 @@
                 </template>
                 </b-form-select>
             </b-col>
+ </div>
         </b-row>
+        </div>
         <!-- </div> -->
         <a id="downloadFile" download="melodies.io.mid" :href="setMelody">Download file </a>
     </div>
@@ -48,11 +54,7 @@ export default {
         return {
             instrumentOptions: ["Synth", "Piano", "Guitar"],
             instrumentSelected: null,
-            soundFonts: []
         }
-    },
-    mounted(){
-        this.soundFonts.push("https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus")
     },
     props: {
         Writer: String,
@@ -69,12 +71,15 @@ export default {
         instrumentSelected: {
             handler(newVal) {
                 var inst = document.getElementById("media-player").noteSequence.notes;
-                console.log("value changed", newVal)
                 if (newVal === "Guitar") {
                     inst.forEach(element => {
-                        element.program = 1;
+                        element.program = 11;
                     });
-                    console.log(inst)
+                }
+                if (newVal === "Piano") {
+                    inst.forEach(element => {
+                        element.program = 0;
+                    });
                 }
             }
         }
@@ -90,6 +95,15 @@ export default {
     letter-spacing: .5px;
   color:#9AAAAA;
 }
+.hotfix{
+    display:contents;
+}
+@media only screen and (max-width:1024px) {
+    .hotfix{
+        display:block;
+    }
+}
+
 .inner-div{
     display:inline-block;
 }
