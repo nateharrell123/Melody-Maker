@@ -10,8 +10,6 @@
                 id="media-player"
                 class="music-player"
                 :src="setMelody"
-                sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-
                 visualizer="#myVisualizer">
                 </midi-player>
             </b-col>
@@ -50,7 +48,11 @@ export default {
         return {
             instrumentOptions: ["Synth", "Piano", "Guitar"],
             instrumentSelected: null,
+            soundFonts: []
         }
+    },
+    mounted(){
+        this.soundFonts.push("https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus")
     },
     props: {
         Writer: String,
@@ -66,9 +68,12 @@ export default {
     watch: {
         instrumentSelected: {
             handler(newVal) {
-                var inst = document.getElementById("media-player");
+                var inst = document.getElementById("media-player").noteSequence.notes;
                 console.log("value changed", newVal)
                 if (newVal === "Guitar") {
+                    inst.forEach(element => {
+                        element.program = 1;
+                    });
                     console.log(inst)
                 }
             }
