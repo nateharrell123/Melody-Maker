@@ -153,6 +153,9 @@
               <span class="accent-color-pink">DryWetMIDI</span>
               </button> 
                 library.
+                <br/>
+                MIDI Files are played on the web using the <button @click="toMIDIPlayer" class="how-it-works">
+                  <span class="accent-color-pink"> HTML MIDI Player </span> </button> library.
               </ul>
             </ul>
           </b-card>
@@ -196,6 +199,9 @@ export default{
     },
     toDryWetMIDI(){
       window.open("https://github.com/melanchall/drywetmidi")
+    },
+    toMIDIPlayer(){
+      window.open("https://github.com/cifkao/html-midi-player")
     }
   }
 }

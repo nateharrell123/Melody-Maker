@@ -53,7 +53,10 @@ export default {
     name: "MusicPlayer",
     data(){
         return {
-            instrumentOptions: ["Synth", "Piano", "Guitar"],
+            instrumentOptions: ["Dist. Guitar", "Piano", 
+            "Ac. Guitar", "Harpsichord", "Orchestra Hit",
+            "Synth", "Strings", "Trumpet", "Sax"
+            , "Flute"],
             instrumentSelected: null,
         }
     },
@@ -72,14 +75,54 @@ export default {
         instrumentSelected: {
             handler(newVal) {
                 var inst = document.getElementById("media-player").noteSequence.notes;
-                if (newVal === "Guitar") {
+                if (newVal === "Orchestra Hit") {
                     inst.forEach(element => {
-                        element.program = 11;
+                        element.program = 55;
+                    });
+                }
+                if (newVal === "Trumpet") {
+                    inst.forEach(element => {
+                        element.program = 56;
                     });
                 }
                 if (newVal === "Piano") {
                     inst.forEach(element => {
                         element.program = 0;
+                    });
+                }
+                if (newVal === "Dist. Guitar") {
+                    inst.forEach(element => {
+                        element.program = 30;
+                    });
+                }
+                if (newVal === "Ac. Guitar") {
+                    inst.forEach(element => {
+                        element.program = 25;
+                    });
+                }
+                if (newVal === "Harpsichord") {
+                    inst.forEach(element => {
+                        element.program = 6;
+                    });
+                }
+                if (newVal === "Synth") {
+                    inst.forEach(element => {
+                        element.program = 81;
+                    });
+                }
+                if (newVal === "Strings") {
+                    inst.forEach(element => {
+                        element.program = 61;
+                    });
+                }
+                if (newVal === "Sax") {
+                    inst.forEach(element => {
+                        element.program = 65;
+                    });
+                }
+                if (newVal === "Flute") {
+                    inst.forEach(element => {
+                        element.program = 75;
                     });
                 }
             }
