@@ -8,3 +8,6 @@ Libraries used:
 * [HTML Midi Player](https://github.com/cifkao/html-midi-player)
 * [DryWetMIDI](https://github.com/melanchall/drywetmidi)
 <img width="1267" alt="Image" src="https://user-images.githubusercontent.com/54548830/172269898-706824a7-2d9f-4360-be5f-5e21f52c837a.png">
+
+<br />
+Happy creating!
